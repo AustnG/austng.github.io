@@ -1,15 +1,13 @@
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1kb3TTZEggnDtHEFnKSIpW2dVcG5u4p5RusRjH8E7QLg/edit?usp=sharing';
 
-  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1kb3TTZEggnDtHEFnKSIpW2dVcG5u4p5RusRjH8E7QLg/edit?usp=sharing';
-  
-  function init() {
-    Tabletop.init( { key: publicSpreadsheetUrl,
-                     callback: showInfo,
-                     simpleSheet: true } )
-  }
+function init() {
+  Tabletop.init( {key: publicSpreadsheetUrl,
+                  callback: showInfo,
+                  simpleSheet: true } )
+}
 
- 
 function showInfo(data, tabletop) {
-data.forEach(function(data) {
+  data.forEach(function(data) {
     header.innerHTML = data.header;
     header2.innerHTML = data.header2;
     body.innerHTML = data.body;
@@ -29,7 +27,7 @@ data.forEach(function(data) {
     body15.innerHTML = data.body15;
     body16.innerHTML = data.body16;
     body17.innerHTML = data.body17;
-
  });
 }
-  window.addEventListener('DOMContentLoaded', init)
+
+window.addEventListener('DOMContentLoaded', init)
