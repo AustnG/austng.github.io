@@ -1,11 +1,11 @@
-Pulled from css-tricks: https://css-tricks.com/creating-an-editable-webpage-with-google-spreadsheets-and-tabletop-js/
-
-In the case where the site is built on the flat files (e.g. HTML, CSS and JavaScript) instead of a CMS (e.g. WordPress), you’ll need some other sort of solution to edit the content without directly editing those files.
-
-Tabletop.js allows us to use Google Spreadsheets as a sort of data store, by taking the spreadsheet and making it easily accessible through JavaScript.It provides the data from a Google Spreadsheet in JSON format, which can then use in an app, like pulling data from any other API.
-
-
-
+Pulled from css-tricks:<br/>
+https://css-tricks.com/creating-an-editable-webpage-with-google-spreadsheets-and-tabletop-js/<br/>
+<br/>
+In the case where the site is built on the flat files (e.g. HTML, CSS and JavaScript) instead of a CMS (e.g. WordPress), you’ll need some other sort of solution to edit the content without directly editing those files.<br/>
+<br/>
+Tabletop.js allows us to use Google Spreadsheets as a sort of data store, by taking the spreadsheet and making it easily accessible through JavaScript. It provides the data from a Google Spreadsheet in JSON format, which can then use in an app, like pulling data from any other API.<br/>
+<br/>
+<br/>
 Open a new spreadsheet --> input your own values in the columns:
 1) The first cell (row) on each column is the reference that’ll be used later in our JavaScript
 2) The second cell is the actual content for the website. 
