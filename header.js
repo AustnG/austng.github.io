@@ -15,8 +15,8 @@ document.write(`
   <body>
     <!-- Navigation -->
     <div class="button-box" style="width:100%; height:100px; background-color:black; color:white; text-align:center;">
-        <a href="http://austng.github.io"><button class="ios-button">Home</button></a>
-        <a href="fitness/index2.html"><button class="mac-button">Page 2</button></a>
+        <a href="https://austng.github.io"><button class="ios-button">Home</button></a>
+        <a href="https://austng.github.io/fitness/index2.html"><button class="mac-button">Page 2</button></a>
     </div>
   </body>
 </html>
