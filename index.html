@@ -10,18 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,600&display=swap" rel="stylesheet">
     
     <title>Austin Greer</title>
-    
-    <style>
-      
-    </style>
+
+    <script>
+      $(function(){
+        var includes = $('[data-include]');
+        jQuery.each(includes, function(){
+          var file = 'views/' + $(this).data('include') + '.html';
+          $(this).load(file);
+        });
+      });
+    </script>
   </head>
   
   <body>
     
     <!-- Navigation -->
     <div style="width:100%; height:100px; background-color:black; color:white; text-align:center;">
-      THIS IS MY NAVIGATION LINK --- how do i put other pages here?<br/>
-      <?php include "header.html" ?>
+      <script src="header.js"></script>
     <div>
     
     <!-- Start Banner -->
@@ -31,11 +36,13 @@
         <h1 id="header" class="banner-header"></h1>
         <p id="header2" class="banner-paragraph"></p>
         
+        <!--
         <div class="button-box">
           <a href="#"><button class="ios-button">Copy-edit</button></a>
           <a href="#"><button class="mac-button">Revise</button></a>
           <a href="fitness/index2.html"><button class="mac-button">To page 2</button></a>
         </div>
+        -->
       </div>
     </header>
     
