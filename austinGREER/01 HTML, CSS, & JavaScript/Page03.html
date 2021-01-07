@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page 3</title>
+
+    <link href="../styles.css" type="text/css" rel="stylesheet" />
+
+    <style type="text/css">
+    </style>
+
+    <script src="angular.min.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>Using JavaScript Libraries/Directories</h3>
+    </header>
+
+    <main class="container">
+        <p class="desc">This page has an Angular JS example below using a JavaScript library:</p>
+
+        <div ng-app="">
+            <p class="bolder">Input text below</p>
+            <p>Name: <input type="text" ng-model="name"></p>
+            <p ng-bind="name"></p>
+        </div>
+    </main>
+</body>
+
+</html>

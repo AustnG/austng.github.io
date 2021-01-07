@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Greer" />
+    <meta name="description" content="An HTML Fundamentals page" />
+
+    <title>Page 8</title>
+
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../stylesCards.css" type="text/css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>IMAGES</h3>
+    </header>
+
+    <main class="container">
+        <p>Basic of using images in your page.</p>
+
+        <!-- Row 1 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Image Tags</header>
+                    <ul>
+                        <li>img</li>
+                        <li>src - where the img can be found (much like href)</li>
+                        <li>alt - text to display/read in place of image</li>
+                        <li>height/width - display sizing control (beware of overuse of this)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    *NOTE: No matter the display size of your image, whatever the ACTUAL size of your image is what
+                    will be downloaded. Make sure to be aware of this to maximize the performance of your page (lots of
+                    large file sizes may slow down your page's performance; especially on mobile).
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    Static image:<br />
+                    <img src="./images/apple.jpg" alt="apple" height="150px" width="150px">
+                </div>
+            </div>
+        </div>
+        <!-- End Row 1 -->
+
+        <!-- Row 2 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">MORE Image Tags</header>
+                    For alternative image sizes
+                    <ul>
+                        <li>srcset - provides different sources (mobile, desktop, etc.) different rendering options</li>
+                        <li>sizes - tells browser make it relative to the veiwport size (uses "vw descriptor as in
+                            "Veiwport"; ex. 25vw, 50vw)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    IDK about this one using "srcset":<br>
+
+                    <img srcset="./images/apple.jpg 480w,
+                                ./images/banana.jpg 1000w,
+                                ./images/cherry.jpg 50w,
+                                ./images/donut.jpg 200w,
+                                ./images/egg.jpg 600w," sizes="(min-width: 480px) 50px,
+                                (min-width: 640px) 60px,
+                                (min-width: 768px) 100px,
+                                (min-width: 1024px) 200px,
+                                (min-width: 1200px) 350px" alt="fruits" src="images/egg.jpg">
+
+                    <!-- src="./images/apple.jpg" -->
+                    <!--
+                            C:\Users\agreer\Desktop\Test Site\02 HTML Beginner\images\apple.jpg 480w,
+                            C:\Users\agreer\Desktop\Test Site\02 HTML Beginner\images\banana.jpg 1000w,
+                            C:\Users\agreer\Desktop\Test Site\02 HTML Beginner\images\cherry.jpg 50w,
+                            C:\Users\agreer\Desktop\Test Site\02 HTML Beginner\images\donut.jpg 200w,
+                            C:\Users\agreer\Desktop\Test Site\02 HTML Beginner\images\egg.jpg 600w,"
+                                ./images/apple.jpg 640w
+                                ./images/banana.jpg 640w,
+                                ./images/cherry.jpg 480w,
+                                ./images/donut.jpg 480w,
+                                ./images/egg.jpg 480w"-->
+                </div>
+            </div>
+        </div>
+        <!-- End Row 2 -->
+
+        <!-- Row 3 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Picture Tag</header>
+                    Used to select images based on media queries or things like supported image formats (jpg, png, etc.)
+                    <ul>
+                        <li>Can include "TYPE" - this tells the browser "if you support this image type, go ahead and
+                            display this image. If NOT here's another image you can use"</li>
+                        <li>Also works for media queries (or detecting page sizes/viewport widths)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Dynamic Fruit Images</header>
+                    Tried this one using <*picture*> tag and "source" element:<br />
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="./images/egg.jpg" width="400px" alt="egg2">
+                            <source media="(min-width: 1024px)" srcset="./images/donut.jpg" width="400px" alt="donut2">
+                            <source media="(min-width: 768px)" srcset="./images/cherry.jpg" width="400px" alt="cherry2">
+                            <source media="(min-width: 640px)" srcset="./images/banana.jpg" width="400px" alt="banana2">
+                            <source media="(min-width: 480px)" srcset="./images/apple.jpg" width="400px" alt="apple2">
+                            <img src="" alt="badEgg" style="width: 150px;">
+                        </picture>
+                </div>
+            </div>
+        </div>
+        <!-- End Row 2 -->
+    </main>
+</body>
+
+</html>

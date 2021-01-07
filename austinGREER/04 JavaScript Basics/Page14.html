@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Greer" />
+    <meta name="description" content="An HTML Fundamentals page" />
+
+    <title>Page 14</title>
+
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../stylesCards.css" type="text/css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>JavaScript: Types & Arrays</h3>
+    </header>
+
+    <main class="container">
+        <!-- Row 1 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">String & Number Types</header>
+                    <br />
+                    let value = "Model";<br />
+                    console.log( typeof(value) ); // = String<br />
+                    <br />
+                    let value = 99;<br />
+                    console.log( typeof(value) ); // = Number<br />
+                    <br />
+                    let value = 4.1 + 4.3;<br />
+                    console.log(value); // = 8.399999<br />
+                    <br />
+                    let value = 10 / 0;<br />
+                    console.log(value); // = Infinity<br />
+                    <br />
+                    let value = -10 / 0;<br />
+                    console.log(value); // = -Infinity<br />
+                    <br />
+                    let value = 0 / 0;<br />
+                    console.log(value); // = NaN (Not a Number)
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Boolean Types</header>
+                    <br />
+                    2 types:<br />
+                    true -or- false<br />
+                    <br />
+                    let value = true;<br />
+                    console.log( typeof(value) ); // = "boolean"<br />
+                    <br />
+                    <br />
+                    *Another name for a boolean is a "FLAG"
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">undefined & null</header>
+                    <dl></dl>
+                    <dt>undefined</dt>
+                    <dd>-JavaScript will initial variables to <i>undefinded</i></dd>
+                    <dd>-We don't assign <i>undefinded</i> to variables</dd>
+                    <dt>null</dt>
+                    <dd>-Our source code should set variables to <i>null</i> if needed</dd>
+                    <br />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Arrays</header>
+                    <br />
+                    let values = [1, 2, 3]; // creating an array<br />
+                    console.log( values[0] ); // 1<br />
+                    console.log( values[1] ); // 2<br />
+                    console.log( values[2] ); // 3<br />
+                    console.log( values[3] ); // undefined<br />
+                    <br /><br />
+                    <span class="desc">*** ARRAYS ARE INDEXED STARTING AT VALUE 0 ***</span><br />
+                    <br /><br />
+                    let cards = ["Ace", "King", "Queen", "Jack"];<br />
+                    console.log(cards);<br />
+                    <br />
+                    results = (4) ["Ace", "King", "Queen", "Jack"] - number = amount of elements<br />
+                    <br />
+                    console.log( cards[0] ); // results = Ace
+                </div>
+            </div>
+        </div>
+        <!-- End Row 1 -->
+
+        <!-- Row 1 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Array Actions</header>
+                    <ul>
+                        <li>.push() - adds to an array</li>
+                        <li>.pop() - pops off the last value from the array</li>
+                        <li>.shift() - removes the 1st value and shifts every other value up in the index</li>
+                        <li>.splice() - deletes the specified index, and can add items after the delete</li>
+                        <li>+MANY MORE...</li>
+                        <br />
+                        <li><a href="https://www.w3schools.com/jsref/jsref_obj_array.asp">W3 Schools - List of Arrays
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Row 2 -->
+
+    </main>
+</body>
+
+</html>

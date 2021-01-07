@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Greer" />
+    <meta name="description" content="An HTML Fundamentals page" />
+
+    <title>Page 15</title>
+
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../stylesCards.css" type="text/css">
+
+    <style type="text/css">
+        table {
+            margin: 0px auto;
+        }
+
+        table,
+        thead,
+        th,
+        tbody,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #8491A3;
+            color: white;
+        }
+    </style>
+
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>JavaScript: Program Flow</h3>
+    </header>
+
+    <main class="container">
+        <!-- Row 1 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Conditionals using if()</header>
+                    <br />
+                    -Values will calculate to either<br />
+                    'true' or 'false'<br />
+                    <br />
+                    <table>
+                        <tbody>
+                            <th>falsy</th>
+                            <th>truthy</th>
+                            <tr>
+                                <td>false</td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>Any number beside 0 (1, -4, 0.5, etc.</td>
+                            </tr>
+                            <tr>
+                                <td>"" or '' (empty strings)</td>
+                                <td>"0"</td>
+                            </tr>
+                            <tr>
+                                <td>null</td>
+                                <td>Everything NOT falsy</td>
+                            </tr>
+                            <tr>
+                                <td>undefined</td>
+                            </tr>
+                            <tr>
+                                <td>NaN</td>
+                            </tr>
+                        </tbody>
+                    </table><br />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">if ... else</header>
+                    <br />
+                    let state = 'KY';<br />
+                    let taxPercent;<br />
+                    <br />
+                    if (state === 'KY') {<br />
+                    &nbsp;&nbsp;taxPercent = 6;<br />
+                    }<br />
+                    else if (state === 'NY'){<br />
+                    &nbsp;&nbsp;taxPercent = 8.875;<br />
+                    }<br />
+                    else{<br />
+                    &nbsp;&nbsp;taxPercent = 0;<br />
+                    }<br />
+                    console.log(taxPercent); // 6<br />
+                    <br />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">switch & case</header>
+                    <br />
+                    let state = 'TX';<br />
+                    <br />
+                    switch(state) {<br />
+                    &nbsp;&nbsp;case 'NY':<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log('New York');<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;break; // stops code if condition is met<br />
+                    &nbsp;&nbsp;case 'TX':<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log('Texas');<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;break;<br />
+                    &nbsp;&nbsp;default:<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;console.log('Unknown');<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;break;<br />
+                    } // result = 'TX' becomes 'Texas'<br />
+                    <br />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Looping with for()</header>
+                    <br />
+                    for (let i = 0; i &lt; 3; i++) {<br />
+                    &nbsp;&nbsp;console.log(i);<br />
+                    } // result = 0 1 2<br />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <!-- End Row 1 -->
+
+        <!-- Row 1 -->
+        <div class="cardContainer">
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Looping with while()</header>
+                    <br />
+                    let count = 1;<br />
+                    while (count &lt; 5) {<br />
+                    &nbsp;&nbsp;console.log(count);<br />
+                    &nbsp;&nbsp;count++;<br />
+                    } // result = 1 2 3 4<br />
+                </div>
+            </div>
+        </div>
+        <!-- End Row 2 -->
+
+    </main>
+</body>
+
+</html>

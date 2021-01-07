@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Greer" />
+    <meta name="description" content="An HTML Fundamentals page" />
+
+    <title>Page 12</title>
+
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../stylesCards.css" type="text/css">
+
+    <style type="text/css">
+        table {
+            margin: 0px auto;
+        }
+
+        table,
+        thead,
+        th,
+        tbody,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #8491A3;
+            color: white;
+        }
+
+        .formContainer {
+            display: inline-flex;
+            border: 1px solid red;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>FORMS</h3>
+    </header>
+
+    <main class="container">
+        <p class="center">Here are common FORM <-inputs-> in alphbetical order:</p>
+
+        <!--
+        <div class="formContainer">
+            <form>
+                <label>FORM LABEL TAG</label><br />
+                <input type="button" value="Button"><br />
+                <input type="checkbox">Checkbox<br />
+                <input type="color">Color<br />
+                <input type="date">Date<br />
+                <input type="datetime">Date Time<br />
+                <input type="datetime-local">Date Time - Local<br />
+                <input type="email">Email<br />
+                <input type="file">File<br />
+                <input type="hidden">Hidden<br />
+                <input type="image">Image<br />
+                <input type="month">Month<br />
+            </form>
+        </div>
+
+        <div class="formContainer">
+            <form>
+                <input type="number">Number<br />
+                <input type="password">Password<br />
+                <input type="radio">Radio<br />
+                <input type="range">Range<br />
+                <input type="reset">Reset<br />
+                <input type="search">Search<br />
+                <input type="submit">Submit<br />
+                <input type="tel">Telephone<br />
+                <input type="text">Text<br />
+                <input type="time">Time<br />
+                <input type="url">URL<br />
+                <input type="week">Week<br />
+            </form>
+        </div>
+        -->
+
+        <table>
+            <thead>
+                <th>Type</th>
+                <th>Result</th>
+                <th></th>
+                <th>Type</th>
+                <th>Result</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Button</td>
+                    <td><input type="button" value="Button"></td>
+                    <td></td>
+                    <td>Password</td>
+                    <td><input type="password"></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Checkbox</td>
+                    <td><input type="checkbox"></td>
+                    <td></td>
+                    <td>Radio</td>
+                    <td><input type="radio"></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td><input type="color"></td>
+                    <td></td>
+                    <td>Range</td>
+                    <td><input type="range">Range</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td><input type="date"></td>
+                    <td></td>
+                    <td>Reset</td>
+                    <td><input type="reset"></td>
+                </tr>
+                <tr>
+                    <td>Date Time</td>
+                    <td><input type="datetime"></td>
+                    <td></td>
+                    <td>Search</td>
+                    <td><input type="search"></td>
+                </tr>
+                <tr>
+                    <td>Date Time-Local</td>
+                    <td><input type="datetime-local"></td>
+                    <td></td>
+                    <td>Submit</td>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email"></td>
+                    <td></td>
+                    <td>Telephone (Tel)</td>
+                    <td><input type="tel"></td>
+                </tr>
+                <tr>
+                    <td>File</td>
+                    <td><input type="file"></td>
+                    <td></td>
+                    <td>Text</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Hidden</td>
+                    <td><input type="hidden"></td>
+                    <td></td>
+                    <td>Time</td>
+                    <td><input type="time"></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="image"></td>
+                    <td></td>
+                    <td>URL</td>
+                    <td><input type="url"></td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td><input type="month"></td>
+                    <td></td>
+                    <td>Week</td>
+                    <td><input type="week"></td>
+                </tr>
+                <tr>
+                    <td>Number</td>
+                    <td><input type="number"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <p>
+            Try to remember to use the 'for' attribute in the label tag to link a label to an input:<br />
+            <br />
+            <span style="color: tomato;">&lt;form><br />
+                &nbsp;&nbsp;&lt;label for="recipie-name">Recipie Name&lt;/label><br />
+                &nbsp;&nbsp;&lt;input typel="text" id="recipie-name"><br />
+                &lt;/form>
+            </span><br />
+            <br />
+            *Input fields are great for little bits of text.
+        </p>
+
+        <hr>
+
+        <p>
+            For areas where you need a lot of text//input, use the TEXTAREA tag:<br />
+            <br />
+            <span style="color: tomato;">&lt;form><br />
+                &nbsp;&nbsp;&lt;label for="ingredients">Ingredients&lt;/label><br />
+                &nbsp;&nbsp;&lt;textarea id="ingredients">&lt;textarea><br />
+                &lt;/form>
+            </span>
+        </p>
+
+        <hr>
+
+        <p>
+            Attribute Selectors are a way to style a tag based on the attributes:<br />
+            <br />
+            input{<br />
+            &nbsp;&nbsp;width: 500px;<br />
+            &nbsp;&nbsp;margin-bottom: 500px;<br />
+            }<br />
+            <br />
+            <span style="color: tomato;">input[type=submit] {<br />
+                &nbsp;&nbsp;width: 125px;<br />
+                &nbsp;&nbsp;font-size: 30px;<br />
+                }</span>
+        </p>
+
+    </main>
+</body>
+
+</html>

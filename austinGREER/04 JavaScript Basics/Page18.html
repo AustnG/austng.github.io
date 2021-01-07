@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Austin Greer" />
+    <meta name="description" content="An HTML Fundamentals page" />
+
+    <title>Page 18</title>
+
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <link rel="stylesheet" href="../stylesCards.css" type="text/css">
+
+    <style type="text/css">
+
+    </style>
+
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h3>JavaScript: Programming for Web Pages</h3>
+    </header>
+
+    <main class="container">
+
+        <!-- Row 1 -->
+        <div class="cardContainer">
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">Summary</header>
+                    <ul>
+                        <li>Setting up a Web Page</li>
+                        <li>Changing Text</li>
+                        <li>Handling a Button Click</li>
+                        <li>Removing and Adding Elements</li>
+                        <li>Adding a User Interface to Blackjack</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="cardContent">
+                    <header class="desc">"D.O.M."</header>
+                    <br />
+                    Document Object Model - defines how the data of a web page is organized and manipulated.
+                </div>
+            </div>
+
+        </div>
+        <!-- End Row 1 -->
+
+        <hr>
+        " Make sure to give things an 'id' "
+
+
+        <h1 id="title">Hello World!</h1>
+
+        <p id="text-area">This is some text...</p>
+
+        <button id="click-me">Click Me</button>
+
+        <script>
+            let textArea = document.getElementById('text-area');
+            let clickButton = document.getElementById('click-me');
+
+            clickButton.addEventListener('click', function () {
+                textArea.innerText = "BUTTON CLICKED. This is text CHANGED by JavaScript.";
+                textArea.style.color = 'tomato';
+            });
+
+
+
+
+
+        </script>
+
+    </main>
+</body>
+
+</html>
