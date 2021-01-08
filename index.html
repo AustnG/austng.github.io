@@ -5,22 +5,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Austin Greer" />
-    <meta name="description" content="Austin\'s Test Dev Website" />
+    <meta name="description" content="Austin\'s Resume & Portfolio" />
 
-    <title>austin_GREER</title>
+    <title>Austin Greer</title>
 
     <!-- displays site properly based on user's device -->
-    <link rel="icon" href="./img/logos.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="" type="image/png" sizes="32x32" />
     <link rel="stylesheet" href="css/main.css" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,600&display=swap">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:400,600&display=swap"> -->
 
-    <!-- Stylesheets from W3 Template--> 
+    <!-- Stylesheets from W3 Template-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        body, h1, h2, h3, h4, h5, h6 {
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: "Montserrat", sans-serif
         }
 
@@ -60,53 +66,51 @@
 
 <body class="w3-black">
 
-    <!-- Icon Bar (Sidebar - hidden on small screens) -->
+    <!-- Navigation -->
+    <!-- Icon Side Bar (hidden on small screens) -->
     <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
         <!-- Avatar image in top left corner -->
         <img src="/w3images/avatar_smoke.jpg" style="width:100%">
         <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-            <i class="fa fa-home w3-xxlarge"></i>
+            <!-- <i class="fa fa-home w3-xlarge"></i> -->
             <p>HOME</p>
         </a>
         <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-user w3-xxlarge"></i>
+            <!-- <i class="fa fa-user w3-xlarge"></i> -->
             <p>ABOUT</p>
         </a>
         <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-eye w3-xxlarge"></i>
-            <p>PHOTOS</p>
+            <!-- <i class="fa fa-eye w3-xlarge"></i> -->
+            <p>PROJECTS</p>
+        </a>
+        <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <p>EDUCATION</p>
         </a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-envelope w3-xxlarge"></i>
+            <!-- <i class="fa fa-envelope w3-xlarge"></i> -->
             <p>CONTACT</p>
         </a>
     </nav>
 
-    <header>
-        <div class="banner">
-            <img src="/img/logo.svg" alt="" class="logo" />
-            <h1 id="header" class="banner-header"></h1>
-            <p id="header2" class="banner-paragraph"></p>
-        </div>
-    </header>
-
-    <!-- Navbar on small screens (Hidden on medium and large screens) -->
+    <!-- Navbar (On small screens - hidden on medium and large screens) -->
     <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
         <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-            <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-            <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-            <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
-            <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+            <a href="#" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
+            <a href="#about" class="w3-bar-item w3-button" style="width:20% !important">ABOUT</a>
+            <a href="#projects" class="w3-bar-item w3-button" style="width:20% !important">PROJECTS</a>
+            <a href="#education" class="w3-bar-item w3-button" style="width:20% !important">EDUCATION</a>
+            <a href="#contact" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
         </div>
     </div>
+    <!-- End Navigation -->
 
     <!-- Page Content -->
     <div class="w3-padding-large" id="main">
         <!-- Header/Home -->
         <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-            <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> John Doe.</h1>
-            <p>Photographer and Web Designer.</p>
-            <img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">
+            <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Austin Greer</h1>
+            <p>Web Developer</p>
+            <img src="/w3images/man_smoke.jpg" alt="Austin" class="w3-image" width="992" height="1108">
         </header>
 
         <!-- About Section -->
@@ -114,52 +118,36 @@
 
             <section class="feature">
                 <div class="intro-text">
-                    <h3 id="body"></h3>
                     <p id="body2"></p>
                 </div>
-        
+
                 <div class="track-snippets">
-                    <div class="snippet-left"><img src="img/image-computer.png" alt="computer" /></div>
-                    <div class="snippet-right">
-                        <div>
-                            <h4 id="body3"></h4>
-                            <p id="body4"></p>
-                        </div>
-                        <div>
-                            <h4 id="body5"></h4>
-                            <p id="body6"></p>
-                        </div>
-                        <div>
-                            <h4 id="body7"></h4>
-                            <p id="body8"></p>
-                        </div>
+                    <div>
+                        <h4 id="body3"></h4>
+                        <p id="body4"></p>
+                    </div>
+                    <div>
+                        <h4 id="body5"></h4>
+                        <p id="body6"></p>
+                    </div>
+                    <div>
+                        <h4 id="body7"></h4>
+                        <p id="body8"></p>
                     </div>
                 </div>
             </section>
-        
+
             <!-- Start Section Two: Access Clipboard anywhere -->
             <section class="feature access-clipboard">
                 <div class="intro-text">
                     <h3 id="body9"></h3>
                     <p id="body10"></p>
                 </div>
-                <div>
-                    <img src="img/image-devices.png" alt="devices" />
-                </div>
             </section>
-
 
             <h2 class="w3-text-light-grey">My Name</h2>
             <hr style="width:200px" class="w3-opacity">
-            <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
+            <p id="body1">BODY1</p>
             <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
             <p class="w3-wide">Photography</p>
             <div class="w3-white">
@@ -197,25 +185,27 @@
                 <i class="fa fa-download"></i> Download Resume
             </button>
 
+            <!-- Columns -->
             <section class="feature supercharge-workflow">
                 <div class="intro-text">
                     <h3 id="body11"></h3>
                     <p id="body12"></p>
                 </div>
                 <div class="columns">
-                    <div class="col create-blacklists">
+                    <div class="col">
                         <img src="img/icon-blacklist.svg" alt="" />
-                        <h4 id="body13"></h4>
-                        <p id="body14"></p>
+                        <h4 id="body8"></h4>
+                        <p id="body8"></p>
                     </div>
                     <div class="col plain-snippets">
                         <img src="img/icon-text.svg" alt="" />
-                        <h4 id="body15"> </h4>
-                        <p id="body16"></p>
+                        <h4 id="body9"> </h4>
+                        <p id="body9"></p>
                     </div>
                     <div class="col sneak-preview">
                         <img src="img/icon-preview.svg" alt="" />
-                        <h4 id="body17" </h4>
+                        <h4 id="body10"></h4>
+                        <p id="body10"></p>
                     </div>
                 </div>
             </section>
@@ -326,14 +316,10 @@
 
         <!-- Footer -->
         <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
             <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
             <i class="fa fa-twitter w3-hover-opacity"></i>
             <i class="fa fa-linkedin w3-hover-opacity"></i>
-            <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank"
-                    class="w3-hover-text-green">w3.css</a></p>
+            <p class="w3-medium">&#169; Austin Greer 2021</p>
             <!-- End footer -->
         </footer>
 

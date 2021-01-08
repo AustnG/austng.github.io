@@ -8,9 +8,7 @@ function init() {
 
 function showInfo(data, tabletop) {
   data.forEach(function(data) {
-    header.innerHTML = data.header;
-    header2.innerHTML = data.header2;
-    body.innerHTML = data.body;
+    body1.innerHTML = data.body;
     body2.innerHTML = data.body2;
     body3.innerHTML = data.body3;
     body4.innerHTML = data.body4;
@@ -20,13 +18,6 @@ function showInfo(data, tabletop) {
     body8.innerHTML = data.body8;
     body9.innerHTML = data.body9;
     body10.innerHTML = data.body10;
-    body11.innerHTML = data.body11;
-    body12.innerHTML = data.body12;
-    body13.innerHTML = data.body13;
-    body14.innerHTML = data.body14;
-    body15.innerHTML = data.body15;
-    body16.innerHTML = data.body16;
-    body17.innerHTML = data.body17;
  });
 }
 
