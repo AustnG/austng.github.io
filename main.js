@@ -8,15 +8,15 @@ function init() {
 
 function showInfo(data, tabletop) {
   data.forEach(function(data) {
-    body1.innerHTML = data.body;
-    body2.innerHTML = data.body2;
-    body3.innerHTML = data.body3;
-    body4.innerHTML = data.body4;
-    body5.innerHTML = data.body5;
-    body6.innerHTML = data.body6;
-    body7.innerHTML = data.body7;
-    body8.innerHTML = data.body8;
-    body9.innerHTML = data.body9;
+    body01.innerHTML = data.body;
+    body02.innerHTML = data.body2;
+    body03.innerHTML = data.body3;
+    body04.innerHTML = data.body4;
+    body05.innerHTML = data.body5;
+    body06.innerHTML = data.body6;
+    body07.innerHTML = data.body7;
+    body08.innerHTML = data.body8;
+    body09.innerHTML = data.body9;
     body10.innerHTML = data.body10;
  });
 }
