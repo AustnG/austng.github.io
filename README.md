@@ -3,27 +3,30 @@
 Author : austng
 Date Created : 20200731
 Current Version : 1.00
-Last Modified : 20200731
+Last Modified : 20210108
 
 Revision History :
 Date Author Ver Revision
 
-20200802 austng 1.00.01 Added readme file
-20200731 austng 1.00 Added ALL files for test creation
+20210108 austng 0.03 Update file structure and consolidated files
+20200802 austng 0.02 Added readme file
+20200731 austng 0.01 Added ALL files for test creation
 
-Pulled from css-tricks:<br/>
-https://css-tricks.com/creating-an-editable-webpage-with-google-spreadsheets-and-tabletop-js/<br/>
-<br/>
-In the case where the site is built on the flat files (e.g. HTML, CSS and JavaScript) instead of a CMS (e.g. WordPress), you’ll need some other sort of solution to edit the content without directly editing those files.<br/>
-<br/>
-Tabletop.js allows us to use Google Spreadsheets as a sort of data store, by taking the spreadsheet and making it easily accessible through JavaScript. It provides the data from a Google Spreadsheet in JSON format, which can then use in an app, like pulling data from any other API.<br/>
-<br/>
-<br/>
+
+//----------------------------------------------------------------//
+
+Pulled from css-tricks:
+https://css-tricks.com/creating-an-editable-webpage-with-google-spreadsheets-and-tabletop-js/
+
+In the case where the site is built on the flat files (e.g. HTML, CSS and JavaScript) instead of a CMS (e.g. WordPress), you’ll need some other sort of solution to edit the content without directly editing those files.
+
+Tabletop.js allows us to use Google Spreadsheets as a sort of data store, by taking the spreadsheet and making it easily accessible through JavaScript. It provides the data from a Google Spreadsheet in JSON format, which can then use in an app, like pulling data from any other API.
+
+
 Open a new spreadsheet --> input your own values in the columns:
-
-1. The first cell (row) on each column is the reference that’ll be used later in our JavaScript
-2. The second cell is the actual content for the website.
-   \*As in "header" is the reference name, and "Please edit me!" is the actual content in the first column
+  1. The first cell (row) on each column is the reference that’ll be used later in our JavaScript
+  2. The second cell is the actual content for the website.
+      *As in "header" is the reference name, and "Please edit me!" is the actual content in the first column
 
 Publish the data to the web by clicking on File → Publish to the web in the menu bar.
 
@@ -113,6 +116,8 @@ This is a section of HTML from my demo showing the empty tags. This is a good wa
     </div>
   </div>
 </section>
+
+
 
 Other useful Links:
 https://medium.com/@jaejohns/how-to-use-google-sheets-as-your-website-database-b0f2f13d0396
