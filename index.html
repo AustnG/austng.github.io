@@ -79,11 +79,14 @@
             <!-- <i class="fa fa-user w3-xlarge"></i> -->
             <p>ABOUT</p>
         </a>
-        <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <a href="#experience" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
             <!-- <i class="fa fa-eye w3-xlarge"></i> -->
-            <p>PROJECTS</p>
+            <p>EXPERIENCE</p>
         </a>
-        <a href="#education" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <!-- <a href="#projects" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <p>PROJECTS</p>
+        </a> -->
+        <a href="#degree" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
             <p>EDUCATION</p>
         </a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
@@ -97,8 +100,9 @@
         <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
             <a href="#" class="w3-bar-item w3-button" style="width:20% !important">HOME</a>
             <a href="#about" class="w3-bar-item w3-button" style="width:20% !important">ABOUT</a>
-            <a href="#projects" class="w3-bar-item w3-button" style="width:20% !important">PROJECTS</a>
-            <a href="#education" class="w3-bar-item w3-button" style="width:20% !important">EDUCATION</a>
+            <a href="#experience" class="w3-bar-item w3-button" style="width:20% !important">EXPERIENCE</a>
+            <!-- <a href="#projects" class="w3-bar-item w3-button" style="width:20% !important">PROJECTS</a> -->
+            <a href="#degree" class="w3-bar-item w3-button" style="width:20% !important">EDUCATION</a>
             <a href="#contact" class="w3-bar-item w3-button" style="width:20% !important">CONTACT</a>
         </div>
     </div>
@@ -110,38 +114,52 @@
         <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
             <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Austin Greer</h1>
             <p>Web Developer</p>
-            <img src="/w3images/man_smoke.jpg" alt="Austin" class="w3-image" width="992" height="1108">
+            <img src="" alt="Austin" class="w3-image" width="992" height="1108">
         </header>
 
         <!-- About Section -->
         <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
             <h2 class="w3-text-light-grey">Austin Greer</h2>
             <hr style="width:200px" class="w3-opacity">
-            
-            <p id="body01"></p>
-            <p id="body02"></p>
-            <p id="body03"></p>
-            <p id="body04"></p>
-            <p id="body05"></p>
-            <p id="body06"></p>
-            <p id="body07"></p>
-            <p id="body08"></p>
-            <p id="body09"></p>
-            <p id="body10"></p>
+
+            <p id="template"></p>
+            <p id="aboutMyself"></p>
 
             <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
             <p class="w3-wide">Photography</p>
             <div class="w3-white">
-                <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+                <div class="w3-dark-grey" style="height:28px;width:69%"></div>
             </div>
             <p class="w3-wide">Web Design</p>
             <div class="w3-white">
-                <div class="w3-dark-grey" style="height:28px;width:85%"></div>
+                <div class="w3-dark-grey" style="height:28px;width:70%"></div>
             </div>
             <p class="w3-wide">Photoshop</p>
             <div class="w3-white">
-                <div class="w3-dark-grey" style="height:28px;width:80%"></div>
-            </div><br>
+                <div class="w3-dark-grey" style="height:28px;width:35%"></div>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="experience">
+            <h2 class="w3-text-light-grey">Experience</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p id="cwOverview"></p>
+            <p id="cw1"></p>
+            <p id="cw2"></p>
+            <p id="cw3"></p>
+            <p id="cw4"></p>
+            <p id="koa"></p>
+            <p id="gm"></p>
+            <p id="ccb"></p>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="projects">
+            <h2 class="w3-text-light-grey">Projects</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p id="body01"></p>
+            <p id="body02"></p>
 
             <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
                 <div class="w3-quarter w3-section">
@@ -161,12 +179,21 @@
                     Meetings
                 </div>
             </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="w3-content w3-justify w3-text-grey w3-padding-16" id="degree">
+            <h2 class="w3-text-light-grey">Education</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p id="education"></p>
 
             <button class="w3-button w3-light-grey w3-padding-large w3-section">
                 <i class="fa fa-download"></i> Download Resume
             </button>
+        </div>
 
-            <!-- Grid for pricing tables -->
+        <!-- Grid for pricing tables -->
+        <!--
             <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
             <div class="w3-row-padding" style="margin:0 -16px">
                 <div class="w3-half w3-margin-bottom">
@@ -202,46 +229,8 @@
                         </li>
                     </ul>
                 </div>
-                <!-- End Grid/Pricing tables -->
             </div>
-
-            <!-- Testimonials -->
-            <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>
-            <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right"
-                style="width:80px">
-            <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
-            <p>John Doe saved us from a web disaster.</p><br>
-
-            <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right"
-                style="width:80px">
-            <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
-            <p>No one is better than John Doe.</p>
-            <!-- End About Section -->
-        </div>
-
-        <!-- Portfolio Section -->
-        <div class="w3-padding-64 w3-content" id="photos">
-            <h2 class="w3-text-light-grey">My Photos</h2>
-            <hr style="width:200px" class="w3-opacity">
-
-            <!-- Grid for photos -->
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-half">
-                    <img src="/w3images/wedding.jpg" style="width:100%">
-                    <img src="/w3images/rocks.jpg" style="width:100%">
-                    <img src="/w3images/sailboat.jpg" style="width:100%">
-                </div>
-
-                <div class="w3-half">
-                    <img src="/w3images/underwater.jpg" style="width:100%">
-                    <img src="/w3images/chef.jpg" style="width:100%">
-                    <img src="/w3images/wedding.jpg" style="width:100%">
-                    <img src="/w3images/p6.jpg" style="width:100%">
-                </div>
-                <!-- End photo grid -->
-            </div>
-            <!-- End Portfolio Section -->
-        </div>
+            End Grid/Pricing tables -->
 
         <!-- Contact Section -->
         <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
@@ -249,12 +238,12 @@
             <hr style="width:200px" class="w3-opacity">
 
             <div class="w3-section">
-                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Chicago, US</p>
-                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Bowling Green, KY - US</p>
+                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: </p>
                 <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com
                 </p>
             </div><br>
-            <p>Let's get in touch. Send me a message:</p>
+            <p>Send me a message:</p>
 
             <form action="/action_page.php" target="_blank">
                 <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>

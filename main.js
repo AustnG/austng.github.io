@@ -8,16 +8,19 @@ function init() {
 
 function showInfo(data, tabletop) {
   data.forEach(function(data) {
+    template.innerHTML = data.template;
+    aboutMyself.innerHTML = data.aboutMyself;
+    cwOverview.innerHTML = data.cwOverview;
+    cw1.innerHTML = data.cw1;
+    cw2.innerHTML = data.cw2;
+    cw3.innerHTML = data.cw3;
+    cw4.innerHTML = data.cw4;
+    koa.innerHTML = data.koa;
+    gm.innerHTML = data.gm;
+    ccb.innerHTML = data.ccb;
+    education.innerHTML = data.education;
     body01.innerHTML = data.body01;
     body02.innerHTML = data.body02;
-    body03.innerHTML = data.body03;
-    body04.innerHTML = data.body04;
-    body05.innerHTML = data.body05;
-    body06.innerHTML = data.body06;
-    body07.innerHTML = data.body07;
-    body08.innerHTML = data.body08;
-    body09.innerHTML = data.body09;
-    body10.innerHTML = data.body10;
  });
 }
 
