@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Austin Greer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111112;
+      --bg-2: #1a1a1c;
+      --bg-card: #161618;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.16);
+      --text: #e8e8e6;
+      --text-muted: #666;
+      --text-mid: #999;
+      --text-dim: #333;
+      --badge-live: rgba(255,255,255,0.06);
+      --badge-live-text: #888;
+      --badge-concept: rgba(255,255,255,0.03);
+      --badge-concept-text: #555;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* SECTIONS */
+    .portfolio-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* PROJECT GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      border: 0.5px solid var(--border);
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .project-card:hover {
+      background: var(--bg-2);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .badge {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge-live {
+      background: var(--badge-live);
+      color: var(--badge-live-text);
+      border: 0.5px solid rgba(255,255,255,0.1);
+    }
+
+    .badge-concept {
+      background: var(--badge-concept);
+      color: var(--badge-concept-text);
+      border: 0.5px solid rgba(255,255,255,0.06);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      font-weight: 300;
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-link {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+      margin-top: auto;
+    }
+
+    .project-link:hover { color: var(--text); }
+
+    .project-link::after {
+      content: '↗';
+      font-size: 10px;
+    }
+
+    .no-link {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    footer span {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    footer a {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .nav-links { gap: 1.5rem; }
+      .project-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a class="nav-logo" href="/">Austin Greer</a>
+      <ul class="nav-links">
+        <li><a href="/portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+        <li><a href="mailto:austin.greer6@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="page-header">
+      <h1>Portfolio</h1>
+      <p>A selection of professional and personal work.</p>
+    </header>
+
+    <!-- PROFESSIONAL -->
+    <section class="portfolio-section">
+      <div class="section-header">
+        <span class="section-title">Professional Projects</span>
+        <span class="section-desc">Salesforce ecosystem · Camping World</span>
+      </div>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">Used RV Pipeline Integration</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Streamlined and automated the Lead & Opportunity process for Used RVs. Designed solutions spanning intake, contact management, communication automation, appointment setting, quoting, and scheduling.</p>
+          <a class="project-link" href="https://rv.campingworld.com/sell" target="_blank" rel="noopener">Visit Site</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">External Platform Integrations</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Updated and maintained third-party integrations between Salesforce and platforms including Twilio, HappyFox, and VIN Solutions, ensuring seamless data flow and operational efficiency.</p>
+          <a class="project-link" href="https://www.campingworld.com/" target="_blank" rel="noopener">Visit Site</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PERSONAL -->
+    <section class="portfolio-section">
+      <div class="section-header">
+        <span class="section-title">Personal Projects</span>
+        <span class="section-desc">Side work, experiments & concepts</span>
+      </div>
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">BGFutsal.com</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Official website for the Bowling Green Futsal league — schedules, standings, and league information for participants and fans.</p>
+          <a class="project-link" href="https://www.bgfutsal.com/" target="_blank" rel="noopener">Visit Site</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">ToastyFC.com</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">The official home for Toasty FC. Player profiles, match results, and news for the team and its supporters.</p>
+          <a class="project-link" href="https://www.toastyfc.com/" target="_blank" rel="noopener">Visit Site</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">Soccer Career Timeline</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">A vertical timeline visually chronicling my soccer career — school and club teams from youth to present day.</p>
+          <a class="project-link" href="https://ais-dev-a4chaypzdmyx3fht6hzr35-61388243839.us-west1.run.app/#/portfolio/soccer-timeline" target="_blank" rel="noopener">View Project</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">Music & Bands Showcase</span>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">A dedicated section for my musical journey — content organization, embedded audio and video, demonstrating multimedia integration on the web.</p>
+          <a class="project-link" href="/music/">Visit Page</a>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="project-name">Fitness Tracker App</span>
+            <span class="badge badge-concept">Concept</span>
+          </div>
+          <p class="project-desc">A mini-app for tracking fitness activities — workout logging, progress charts, and personal record management.</p>
+          <span class="no-link">In Progress</span>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <span>austng.github.io</span>
+      <a href="https://github.com/AustnG" target="_blank" rel="noopener">github.com/AustnG ↗</a>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Austin Greer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111112;
+      --bg-2: #1a1a1c;
+      --border: rgba(255,255,255,0.08);
+      --text: #e8e8e6;
+      --text-muted: #666;
+      --text-dim: #444;
+      --accent: #e8e8e6;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .initials-stack {
+      cursor: default;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .initials-solid {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(96px, 18vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      display: block;
+      transition: color 0.4s;
+    }
+
+    .initials-outline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(96px, 18vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px #333;
+      display: block;
+      margin-top: -0.1em;
+      transition: -webkit-text-stroke-color 0.4s;
+    }
+
+    .initials-stack:hover .initials-solid { color: #ccc; }
+    .initials-stack:hover .initials-outline { -webkit-text-stroke-color: #555; }
+
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .tagline strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .cta-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 0.5px solid #333;
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-link:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 600px) {
+      .hero-footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .nav-links { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a class="nav-logo" href="/">Austin Greer</a>
+      <ul class="nav-links">
+        <li><a href="/portfolio.html">Portfolio</a></li>
+        <li><a href="/resume.html">Resume</a></li>
+        <li><a href="mailto:austin.greer6@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="hero">
+      <div class="initials-stack">
+        <span class="initials-solid">AG</span>
+        <span class="initials-outline">AG</span>
+      </div>
+      <div class="hero-footer">
+        <p class="tagline">
+          <strong>Salesforce Platform Developer</strong> · Bowling Green, KY<br>
+          Building the software that runs the business.
+        </p>
+        <a class="cta-link" href="/portfolio.html">View work →</a>
+      </div>
+    </main>
+
+    <footer>
+      <span>austng.github.io</span>
+      <span>© 2025 Austin Greer</span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume — Austin Greer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111112;
+      --bg-2: #1a1a1c;
+      --border: rgba(255,255,255,0.08);
+      --border-med: rgba(255,255,255,0.12);
+      --text: #e8e8e6;
+      --text-muted: #666;
+      --text-dim: #3a3a3a;
+      --text-mid: #999;
+      --tag-bg: #1e1e20;
+      --tag-border: rgba(255,255,255,0.1);
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .contact-row a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-row a:hover { color: var(--text); }
+
+    .contact-sep {
+      color: var(--text-dim);
+    }
+
+    /* MAIN LAYOUT */
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+    }
+
+    /* LEFT COLUMN */
+    .col-main {
+      padding: 2.5rem 3rem 3rem 0;
+      border-right: 0.5px solid var(--border);
+    }
+
+    /* RIGHT COLUMN */
+    .col-side {
+      padding: 2.5rem 0 3rem 2.5rem;
+    }
+
+    /* SECTION */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* PROFILE */
+    .profile-text {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+
+    /* EXPERIENCE */
+    .job {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .job:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .job-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .job-dates {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .job-company {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .job-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .job-bullets li {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      font-weight: 300;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .job-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-dim);
+    }
+
+    /* KEY PROJECTS */
+    .projects-block {
+      margin-top: 1rem;
+    }
+
+    .projects-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-item {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      font-weight: 300;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-item::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--text-dim);
+    }
+
+    .project-year {
+      color: var(--text-dim);
+      font-size: 11px;
+    }
+
+    /* SIDE COLUMN — SKILLS */
+    .skill-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .skill-group-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-sub-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      margin-top: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 11px;
+      color: var(--text-mid);
+      background: var(--tag-bg);
+      border: 0.5px solid var(--tag-border);
+      border-radius: 3px;
+      padding: 3px 8px;
+      letter-spacing: 0.02em;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-item {
+      font-size: 13px;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .cert-item::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--text-dim);
+      font-size: 11px;
+    }
+
+    /* EDUCATION */
+    .edu-degree {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-school {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-dates {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer span {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .download-link {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .download-link:hover { color: var(--text); }
+
+    @media (max-width: 680px) {
+      .resume-body { grid-template-columns: 1fr; }
+      .col-main { padding-right: 0; border-right: none; border-bottom: 0.5px solid var(--border); padding-bottom: 2rem; }
+      .col-side { padding-left: 0; }
+      .nav-links { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <a class="nav-logo" href="/">Austin Greer</a>
+      <ul class="nav-links">
+        <li><a href="/portfolio.html">Portfolio</a></li>
+        <li><a href="/resume.html" class="active">Resume</a></li>
+        <li><a href="mailto:austin.greer6@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="page-header">
+      <h1>Austin Greer</h1>
+      <div class="contact-row">
+        <span>Bowling Green, KY</span>
+        <span class="contact-sep">·</span>
+        <a href="tel:2702450938">270-245-0938</a>
+        <span class="contact-sep">·</span>
+        <a href="mailto:austin.greer6@gmail.com">austin.greer6@gmail.com</a>
+        <span class="contact-sep">·</span>
+        <a href="https://github.com/AustnG" target="_blank" rel="noopener">github.com/AustnG</a>
+      </div>
+    </header>
+
+    <div class="resume-body">
+
+      <!-- LEFT: EXPERIENCE -->
+      <main class="col-main">
+
+        <section class="section">
+          <p class="section-label">Profile</p>
+          <p class="profile-text">With 11+ years of experience at Camping World, I've transitioned from analyzing inventory to building the software that manages it. I bridge the gap between stakeholder needs and technical execution — specializing in CRM optimization, API integrations, and automations leveraging AI, Agents, and workflows.</p>
+        </section>
+
+        <section class="section">
+          <p class="section-label">Experience</p>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Salesforce Platform Developer II + Admin</span>
+              <span class="job-dates">2019 – 2026</span>
+            </div>
+            <p class="job-company">Camping World · Bowling Green, KY</p>
+            <ul class="job-bullets">
+              <li>Serve as Developer and Administrator on the Salesforce platform across Sales Cloud, Commerce Cloud, Marketing Cloud, Data Cloud, and Agentforce.</li>
+              <li>Successfully integrated third-party platforms — including Snowflake, Twilio, Azure, and Vin Solutions — to support cross-departmental teams in Sales, Service, and Call Centers.</li>
+              <li>Operate within an Agile framework, managing 2-week sprints and documenting Projects/Epics via Jira and Confluence.</li>
+            </ul>
+            <div class="projects-block">
+              <p class="projects-label">Key Projects</p>
+              <p class="project-item"><span class="project-year">[2025]</span> Lead/Opportunity Conversion — Re-engineered the Consignment Request process into a standard Lead/Opportunity model to improve tracking and quoting.</p>
+              <p class="project-item"><span class="project-year">[2024]</span> Universal Pricing API — Modernized legacy auto-pricing into a universal, company-wide API system.</p>
+              <p class="project-item"><span class="project-year">[2023]</span> Mobile Evaluation App (MEA) — Built processes for RV inspectors to conduct remote inspections outside dealership locations.</p>
+              <p class="project-item"><span class="project-year">[2022]</span> Automated Pricing — Developed a pricing tool for Consignment Requests and a Pricing Management Tool using an internal Used RV Inventory Index.</p>
+              <p class="project-item"><span class="project-year">[2020]</span> RV Communicator — Architected a Twilio texting integration within Salesforce for sales teams.</p>
+            </div>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Email Marketing Analyst</span>
+              <span class="job-dates">2017 – 2019</span>
+            </div>
+            <p class="job-company">Camping World · Bowling Green, KY</p>
+            <ul class="job-bullets">
+              <li>Coordinated end-to-end generation, deployment, and analysis of retail marketing emails.</li>
+              <li>Partnered with business leaders to design strategies for product promotions, special events, and enterprise-wide communications.</li>
+              <li>Developed email code using HTML, CSS, and AMPscript within ExactTarget (Salesforce Marketing Cloud).</li>
+              <li>Analyzed sales performance and customer data to iterate on online marketing strategies.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Inventory Analyst</span>
+              <span class="job-dates">2016 – 2017</span>
+            </div>
+            <p class="job-company">Camping World · Bowling Green, KY</p>
+            <ul class="job-bullets">
+              <li>Managed inventory levels across multiple vendors for retail stores and national warehouses.</li>
+              <li>Leveraged Cognos, TM1, and Excel to generate performance reports and demand forecasting insights.</li>
+              <li>Played a key role in the 2016 SKU Expansion Project — rolling out 700+ new products across Pet and Bowery categories.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <span class="job-title">Website Developer</span>
+              <span class="job-dates">2014 – 2016</span>
+            </div>
+            <p class="job-company">Camping World & Good Sam + MarcusLemonis.com · Bowling Green, KY</p>
+            <ul class="job-bullets">
+              <li>Managed corporate websites and automated reporting by syncing Google Analytics data to internal databases.</li>
+              <li>Developed and maintained multiple high-visibility Shopify sites under the MarcusLemonis.com brand (featured on The Profit).</li>
+              <li>Used HTML, CSS, C#, JavaScript, and SQL to translate designer mockups into responsive webpages.</li>
+            </ul>
+          </div>
+
+        </section>
+      </main>
+
+      <!-- RIGHT: SKILLS, CERTS, EDUCATION -->
+      <aside class="col-side">
+
+        <section class="section">
+          <p class="section-label">Certifications</p>
+          <p class="cert-item">Salesforce Certified Platform Developer I</p>
+          <p class="cert-item">Salesforce Certified Administrator</p>
+        </section>
+
+        <section class="section">
+          <p class="section-label">Education</p>
+          <p class="edu-degree">B.S. Financial Economics</p>
+          <p class="edu-school">Centre College · Danville, KY</p>
+          <p class="edu-dates">2009 – 2013</p>
+        </section>
+
+        <section class="section">
+          <p class="section-label">Skills</p>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Salesforce</p>
+            <p class="skill-sub-label">Development</p>
+            <div class="tags">
+              <span class="tag">Apex</span>
+              <span class="tag">LWC</span>
+              <span class="tag">Aura</span>
+              <span class="tag">SOQL</span>
+              <span class="tag">Flows</span>
+              <span class="tag">SFDX</span>
+            </div>
+            <p class="skill-sub-label">AI & Intelligence</p>
+            <div class="tags">
+              <span class="tag">Agentforce</span>
+              <span class="tag">Einstein</span>
+              <span class="tag">Claude</span>
+              <span class="tag">ChatGPT</span>
+              <span class="tag">Gemini</span>
+            </div>
+            <p class="skill-sub-label">Marketing Cloud</p>
+            <div class="tags">
+              <span class="tag">ExactTarget</span>
+              <span class="tag">AMPscript</span>
+              <span class="tag">Journey Builder</span>
+            </div>
+            <p class="skill-sub-label">Tools & Data</p>
+            <div class="tags">
+              <span class="tag">DataLoader</span>
+              <span class="tag">Workbench</span>
+              <span class="tag">Gearset</span>
+              <span class="tag">Snowflake</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Development</p>
+            <p class="skill-sub-label">Languages</p>
+            <div class="tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Java</span>
+              <span class="tag">C#</span>
+              <span class="tag">.NET</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+            </div>
+            <p class="skill-sub-label">Frameworks</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">Shopify</span>
+              <span class="tag">Magento</span>
+            </div>
+            <p class="skill-sub-label">Web & APIs</p>
+            <div class="tags">
+              <span class="tag">Postman</span>
+              <span class="tag">Twilio</span>
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <p class="skill-group-label">Data & Analytics</p>
+            <div class="tags">
+              <span class="tag">Google Analytics</span>
+              <span class="tag">Cognos</span>
+              <span class="tag">Oracle</span>
+              <span class="tag">IBM TM1</span>
+              <span class="tag">Hawksearch</span>
+            </div>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+
+    <footer>
+      <span>austng.github.io</span>
+      <a class="download-link" href="/Resume_-_Austin_Greer.docx" download>Download .docx ↓</a>
+    </footer>
+  </div>
+</body>
+</html>
