@@ -5,10 +5,24 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          portfolio: path.resolve(__dirname, 'portfolio.html'),
+          resume: path.resolve(__dirname, 'resume.html'),
+          found: path.resolve(__dirname, 'found.html'),
+          lost: path.resolve(__dirname, 'lost.html'),
+          notFound: path.resolve(__dirname, '404.html'),
+        },
       },
     },
     server: {
