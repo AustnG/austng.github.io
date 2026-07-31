@@ -207,6 +207,8 @@ export const PROJECTS: ProjectItem[] = [
 
 export const LOST_ITEM_DATA = {
   ownerName: 'Austin Greer',
+  phone: '+1 (270) 245-0938',
+  phoneRaw: '2702450938',
   email: 'austin.greer6@gmail.com',
   github: 'https://github.com/AustnG',
   site: 'austng.github.io'

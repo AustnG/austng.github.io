@@ -48,15 +48,38 @@ export const LostItemView: React.FC = () => {
           {LOST_ITEM_DATA.ownerName}
         </p>
 
-        <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col gap-5 mb-8">
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] tracking-[0.12em] uppercase text-[#888] font-medium">
+              Primary Contact (Phone / Text)
+            </span>
+            <div className="flex items-center justify-center gap-2">
+              <a
+                href={`tel:${LOST_ITEM_DATA.phoneRaw}`}
+                className="text-[17px] font-semibold text-[#111] hover:text-[#555] transition-colors"
+                id="lost-phone-link"
+              >
+                {LOST_ITEM_DATA.phone}
+              </a>
+              <button
+                onClick={() => handleCopy(LOST_ITEM_DATA.phone, 'phone')}
+                className="text-[#aaa] hover:text-[#111] transition-colors p-1"
+                title="Copy phone number"
+                id="lost-copy-phone-btn"
+              >
+                {copiedText === 'phone' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+          </div>
+
           <div className="flex flex-col gap-1">
             <span className="text-[10px] tracking-[0.12em] uppercase text-[#aaa]">
-              Contact Email
+              Email
             </span>
             <div className="flex items-center justify-center gap-2">
               <a
                 href={`mailto:${LOST_ITEM_DATA.email}?subject=Found%20your%20lost%20item`}
-                className="text-[15px] font-medium text-[#111] hover:text-[#555] transition-colors"
+                className="text-[14px] font-medium text-[#444] hover:text-[#111] transition-colors"
                 id="lost-email-link"
               >
                 {LOST_ITEM_DATA.email}
@@ -73,10 +96,17 @@ export const LostItemView: React.FC = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <a
+            href={`tel:${LOST_ITEM_DATA.phoneRaw}`}
+            className="flex-1 py-3 px-4 text-[12px] font-medium tracking-[0.06em] uppercase bg-[#111] text-white hover:bg-[#333] transition-colors text-center border border-[#111]"
+            id="lost-call-now-btn"
+          >
+            Call / Text
+          </a>
           <a
             href={`mailto:${LOST_ITEM_DATA.email}?subject=Found%20your%20lost%20item`}
-            className="block w-full py-3 px-4 text-[12px] font-medium tracking-[0.06em] uppercase bg-[#111] text-white hover:bg-[#333] transition-colors text-center border border-[#111]"
+            className="flex-1 py-3 px-4 text-[12px] font-medium tracking-[0.06em] uppercase bg-white text-[#111] hover:bg-[#f5f5f3] transition-colors text-center border border-[#ddd]"
             id="lost-send-email-btn"
           >
             Send Email
