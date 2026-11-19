@@ -1,0 +1,49 @@
+---
+import { getProfile, splitTagline } from '../lib/content';
+const p = await getProfile();
+const tag = splitTagline(p.tagline);
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="label" data-decode>Get in touch</p>
+    <!-- No email here on purpose: it appears only on /card and /lost (see AGENTS.md). -->
+    <a class="footer-cta link" href={p.links.linkedin} rel="me noopener" target="_blank">Say hello on LinkedIn <span class="arrow">↗</span></a>
+    <ul class="footer-links">
+      <li><a class="btn" href="/card">Contact card</a></li>
+      <li><a class="btn" href={p.links.github} rel="me noopener" target="_blank">GitHub <span class="arrow">↗</span></a></li>
+      <li><a class="btn" href="/resume">Resume</a></li>
+    </ul>
+    <div class="corners">
+      <span class="label">© {year} {p.name}</span>
+      <span class="label">{p.location}</span>
+      <span class="label label--ink">{tag.before}{tag.chip && <span class="chip">{tag.chip}</span>}{tag.after}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding-top: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+    padding-bottom: 1.5rem;
+  }
+  .footer-cta {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: var(--step-3);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+  .corners {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin-top: clamp(3rem, 2rem + 4vw, 6rem);
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+</style>

@@ -1,0 +1,21 @@
+# Skill groups on /resume. `order` sets the order on the page (lowest first).
+- id: salesforce
+  order: 1
+  label: Salesforce
+  skills: [Apex, LWC, Aura, SOQL, Flows, SFDX, Data Cloud, Marketing Cloud, AMPscript, Journey Builder]
+- id: ai
+  order: 2
+  label: AI & agents
+  skills: [Agentforce, Einstein, Claude, ChatGPT, Gemini]
+- id: dev
+  order: 3
+  label: Development
+  skills: [JavaScript, TypeScript, Java, C#, .NET, HTML, CSS, React, Astro, Shopify, WordPress, Magento]
+- id: integration
+  order: 4
+  label: Integration & tools
+  skills: [REST APIs, Postman, Twilio, Snowflake, Azure, Git, GitHub, Gearset, Data Loader, Workbench]
+- id: data
+  order: 5
+  label: Data & analytics
+  skills: [Google Analytics, Cognos, IBM TM1, Oracle, Excel]

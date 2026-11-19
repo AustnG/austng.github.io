@@ -1,0 +1,31 @@
+---
+// Halftone squircle mark (Vid00). See src/scripts/halftone.ts for the drawing.
+interface Props {
+  glyphs: string[];
+  label: string;
+  mode?: 'cycle' | 'hover' | 'static';
+  grid?: number;
+  theme?: 'light' | 'dark';
+  class?: string;
+}
+const { glyphs, label, mode = 'cycle', grid = 56, theme = 'light', class: cls } = Astro.props;
+---
+<canvas
+  class:list={['halftone', cls]}
+  data-halftone
+  data-glyphs={glyphs.join(',')}
+  data-mode={mode}
+  data-grid={grid}
+  data-theme={theme}
+  role="img"
+  aria-label={label}
+></canvas>
+
+<script>
+  import { mountAllHalftones } from '../scripts/halftone';
+  mountAllHalftones();
+</script>
+
+<style>
+  .halftone { width: 100%; aspect-ratio: 1; }
+</style>

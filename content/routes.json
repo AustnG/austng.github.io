@@ -1,0 +1,12 @@
+{
+  "_comment": "URLs that must always resolve. Some are printed on physical QR codes. CI fails if any is missing from the build. Add to this list; never remove from it.",
+  "frozen": [
+    { "path": "/", "file": "index.html", "why": "Home" },
+    { "path": "/lost", "file": "lost.html", "why": "Printed on lost-item QR stickers" },
+    { "path": "/found", "file": "found.html", "why": "Old lost-item URL from the first site" },
+    { "path": "/resume", "file": "resume.html", "why": "Old site page; shared links" },
+    { "path": "/portfolio", "file": "portfolio.html", "why": "Old site page; shared links" },
+    { "path": "/card", "file": "card.html", "why": "Business card QR destination" },
+    { "path": "/austin-greer.vcf", "file": "austin-greer.vcf", "why": "Save-contact download on /card" }
+  ]
+}

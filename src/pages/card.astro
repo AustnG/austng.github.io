@@ -1,0 +1,82 @@
+---
+// Business-card QR destination. One screen on a phone: who I am, save the contact, and the links.
+import Base from '../layouts/Base.astro';
+import HalftoneMark from '../components/HalftoneMark.astro';
+import { getProfile } from '../lib/content';
+import { qrSvg } from '../lib/qr';
+
+const p = await getProfile();
+const cardUrl = new URL('/card', Astro.site).toString();
+const qr = await qrSvg(cardUrl);
+---
+<!-- noindex: this page shows the email, so keep it out of search results. It's reached by QR code. -->
+<Base title={`${p.name}, contact card`} description={`Save ${p.name}'s contact: ${p.role} at ${p.company}.`} chrome={false} noindex>
+  <div class="card-page">
+    <header class="top">
+      <a class="label label--ink" href="/">Austin Greer</a>
+      <span class="label">Contact card</span>
+    </header>
+
+    <div class="who">
+      <div class="mark"><HalftoneMark glyphs={['AG', 'code', 'note', 'ball']} theme="dark" grid={44} label="Austin Greer monogram" /></div>
+      <h1>{p.name}</h1>
+      <p class="role">{p.role}</p>
+      <p class="co label">{p.company}</p>
+      <p class="label">{p.location}</p>
+    </div>
+
+    <ul class="actions">
+      <li><a class="act act--primary" href="/austin-greer.vcf" download>Save contact <span class="label">.vcf</span></a></li>
+      <li><a class="act" href={p.links.linkedin} target="_blank" rel="me noopener">LinkedIn <span class="arrow">↗</span></a></li>
+      <li><a class="act" href={`mailto:${p.email}`}>Email <span class="label">{p.email}</span></a></li>
+      <li><a class="act" href="/resume">Resume <span class="arrow">→</span></a></li>
+      <li><a class="act" href="/portfolio">Portfolio <span class="arrow">→</span></a></li>
+    </ul>
+
+    <details class="share">
+      <summary class="label">Show QR code to share this card</summary>
+      <div class="qr" set:html={qr} />
+      <p class="label">{cardUrl.replace('https://', '')}</p>
+    </details>
+  </div>
+</Base>
+
+<style>
+  .card-page {
+    max-width: 28rem;
+    margin: 0 auto;
+    min-height: 100svh;
+    padding: 1rem var(--gutter) 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .top { display: flex; justify-content: space-between; }
+  .who { text-align: center; padding-top: 0.5rem; }
+  .mark { width: 132px; margin: 0 auto 1.4rem; }
+  h1 { font-size: var(--step-3); letter-spacing: -0.04em; }
+  .role { margin-top: 0.6rem; font-size: var(--step-1); color: var(--ink-soft); line-height: 1.35; }
+  .co { margin-top: 0.6rem; }
+  .actions { display: grid; gap: 0.55rem; }
+  .act {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    font-weight: 500;
+    background: var(--bg-raised);
+    transition: border-color var(--dur) var(--ease-out);
+  }
+  .act:hover { border-color: var(--ink); }
+  .act .label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .act--primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .act--primary .label { color: var(--bg); opacity: 0.6; }
+  .share { text-align: center; }
+  .share summary { cursor: pointer; list-style: none; padding: 0.5rem; }
+  .share summary::-webkit-details-marker { display: none; }
+  .qr { width: 180px; margin: 1rem auto; padding: 14px; background: var(--bg-raised); border-radius: 16px; }
+  .qr :global(svg) { width: 100%; height: auto; }
+</style>

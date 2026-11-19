@@ -1,0 +1,21 @@
+# Teams, leagues, and the playing/coaching timeline on /sport.
+# kind: team | league | timeline.   Timeline entries show `years` on the left, newest first.
+- id: toasty-fc
+  kind: team
+  name: Toasty FC
+  blurb: Player profiles, match results, and team news, on the team site I built.
+  link: https://www.toastyfc.com/
+  linkText: toastyfc.com
+
+- id: bg-futsal
+  kind: league
+  name: Bowling Green Futsal
+  blurb: The local futsal league. I built its website, with schedules and standings.
+  link: https://www.bgfutsal.com/
+  linkText: bgfutsal.com
+
+- id: sky-soccer-coach
+  kind: timeline
+  name: SKY Soccer Club
+  years: 2010 – 2011
+  blurb: Assistant coach and trainer for boys' and girls' U-15 teams.

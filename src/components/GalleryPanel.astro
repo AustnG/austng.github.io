@@ -1,0 +1,56 @@
+---
+// Light gray "gallery" frame from Vid00: content centered, tiny labels pinned to all four corners.
+// A [bracketed] word in any corner label gets the inverted chip.
+import { splitTagline } from '../lib/content';
+
+interface Props { tl?: string; tr?: string; bl?: string; br?: string; class?: string; tall?: boolean }
+const { tl, tr, bl, br, class: cls, tall = false } = Astro.props;
+const corners = { tl, tr, bl, br };
+---
+<div class:list={['gallery', cls, { 'gallery--tall': tall }]}>
+  {Object.entries(corners).map(([pos, text]) => {
+    if (!text) return null;
+    const t = splitTagline(text);
+    return (
+      <span class={`gallery__corner gallery__${pos}`}>
+        {t.before}{t.chip && <span class="gallery__chip">{t.chip}</span>}{t.after}
+      </span>
+    );
+  })}
+  <div class="gallery__stage"><slot /></div>
+</div>
+
+<style>
+  .gallery {
+    position: relative;
+    background: var(--gallery);
+    color: var(--gallery-ink);
+    border-radius: 4px;
+    min-height: clamp(360px, 52vw, 640px);
+    display: grid;
+    place-items: center;
+    padding: 3.5rem 1.25rem;
+    overflow: hidden;
+  }
+  .gallery--tall { min-height: clamp(420px, 62vw, 760px); }
+  .gallery__stage { width: 100%; display: grid; place-items: center; }
+  .gallery__corner {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    color: var(--gallery-muted);
+    line-height: 1.2;
+    max-width: 45%;
+  }
+  .gallery__tl { top: 1rem; left: 1.1rem; color: var(--gallery-ink); }
+  .gallery__tr { top: 1rem; right: 1.1rem; text-align: right; }
+  .gallery__bl { bottom: 1rem; left: 1.1rem; }
+  .gallery__br { bottom: 1rem; right: 1.1rem; text-align: right; }
+  .gallery__chip {
+    background: var(--gallery-muted);
+    color: var(--gallery);
+    padding: 0 0.3em;
+    margin-left: 0.2em;
+  }
+</style>

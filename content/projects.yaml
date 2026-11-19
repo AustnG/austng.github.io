@@ -1,0 +1,67 @@
+# Portfolio entries. `mark` is 1–3 characters drawn as a halftone logo, or one of: code, note, ball, pin.
+# status: live | in-progress | concept.   category: work | personal.
+- id: used-rv-pipeline
+  name: Used RV Pipeline
+  mark: RV
+  category: work
+  status: live
+  year: 2025
+  desc: Automated the lead-to-opportunity process for used RVs, from intake and contact management to messaging, appointments, quoting, and scheduling.
+  link: https://rv.campingworld.com/sell
+  linkText: rv.campingworld.com/sell
+
+- id: platform-integrations
+  name: Platform Integrations
+  mark: API
+  category: work
+  status: live
+  year: 2024
+  desc: Built and maintained integrations between Salesforce and Twilio, HappyFox, and VinSolutions so data moved cleanly between sales, service, and the call center.
+  link: https://www.campingworld.com/
+  linkText: campingworld.com
+
+- id: this-site
+  name: austng.github.io
+  mark: AG
+  category: personal
+  status: in-progress
+  year: 2026
+  desc: This site. A static Astro build on GitHub Pages with motion drawn in Canvas 2D, and every word kept in plain YAML so any AI agent can update it.
+  link: https://github.com/AustnG/austng.github.io
+  linkText: Source on GitHub
+
+- id: bgfutsal
+  name: BGFutsal.com
+  mark: BG
+  category: personal
+  status: live
+  year: 2024
+  desc: The Bowling Green Futsal league site, with schedules, standings, and league information for players and fans.
+  link: https://www.bgfutsal.com/
+  linkText: bgfutsal.com
+
+- id: toastyfc
+  name: ToastyFC.com
+  mark: TF
+  category: personal
+  status: live
+  year: 2024
+  desc: Home of Toasty FC, with player profiles, match results, and team news.
+  link: https://www.toastyfc.com/
+  linkText: toastyfc.com
+
+- id: soccer-timeline
+  name: Soccer Timeline
+  mark: ball
+  category: personal
+  status: in-progress
+  year: 2026
+  desc: A visual timeline of every school and club team I've played on, from youth soccer to today.
+
+- id: fitness-tracker
+  name: Fitness Tracker
+  mark: FT
+  category: personal
+  status: concept
+  year: 2026
+  desc: A small app for logging workouts, charting progress, and tracking personal records.

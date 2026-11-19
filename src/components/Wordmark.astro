@@ -1,0 +1,58 @@
+---
+// Kinetic wordmark (Vid02). The <h1> is the real text; the canvas paints the motion over it.
+// With reduced motion or no JavaScript, the static text shows with spectrum-colored ends.
+interface Props { lines: string[]; label: string }
+const { lines, label } = Astro.props;
+---
+<div class="wordmark" data-wordmark>
+  <h1 class="wordmark__text spectrum-text" data-wordmark-text aria-label={label}>
+    {lines.map((line, i) => (
+      <Fragment>
+        <span class="wordmark__line" data-line>{line}</span>{i < lines.length - 1 ? ' ' : ''}
+      </Fragment>
+    ))}
+  </h1>
+  <canvas class="wordmark__canvas" aria-hidden="true"></canvas>
+</div>
+
+<script>
+  import { mountAllWordmarks } from '../scripts/wordmark';
+  mountAllWordmarks();
+</script>
+
+<style>
+  /*
+    Sized to the column, not the window: "AUSTIN GREER" is ~6.5em wide in Geist 500 at this tracking,
+    so 14.2cqi fills ~92% of the column and leaves room for the breathing letter-spacing.
+    On phones the words stack; "AUSTIN" is ~3.26em, so 28cqi fills ~91%.
+    If you change the font, weight, or tracking, re-measure these two numbers.
+  */
+  .wordmark { position: relative; user-select: text; container-type: inline-size; }
+  .wordmark__text {
+    font-size: 14.2cqi;
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    white-space: nowrap;
+  }
+  .wordmark__line { display: inline-block; }
+  .wordmark__canvas {
+    position: absolute;
+    left: 0;
+    top: -20%;
+    width: 100%;
+    height: 140%;
+    pointer-events: none;
+    display: none;
+  }
+  .wordmark.is-live .wordmark__canvas { display: block; }
+  .wordmark.is-live .wordmark__text {
+    background: none;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  @media (max-width: 720px) {
+    .wordmark__text { font-size: 28cqi; }
+    .wordmark__line { display: block; }
+  }
+</style>

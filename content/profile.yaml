@@ -1,0 +1,51 @@
+# Site-wide profile: one entry, keyed "austin". Used by every page.
+# Edit the words here; layouts and components read from this file.
+austin:
+  name: Austin Greer
+  initials: AG
+  # Headline, intro, and summary describe what I do and my current role. Past employers live only in
+  # experience.yaml (the resume), not here. These three are reused across the site
+  # (home hero, home "Now", resume, page descriptions), so keep them in step with each other.
+  headline: Platform administrator & Salesforce developer
+  role: Employee Benefits Platform Administrator
+  company: Houchens Insurance Group
+  companyShort: HIG
+  location: Bowling Green, KY
+  # One sentence under the name on the home page and in search/social previews.
+  intro: I turn how teams work into platforms they can rely on.
+  # The small corner line. The word in [brackets] gets the inverted chip.
+  tagline: Code, music, [futsal]
+  summary: >-
+    I design, build, and run the business platforms people rely on every day, connecting what teams need
+    with how the technology works: CRM design, integrations, automation, and AI agents and workflows. As
+    Employee Benefits Platform Administrator at Houchens Insurance Group, I look after the platform behind
+    the benefits team and turn how they sell and serve clients into clear, reliable workflows.
+  # The three numbers in the home "Now" section.
+  stats:
+    - value: 12+
+      label: Years of experience
+    - value: 7+
+      label: Years developing on Salesforce
+    - value: '3'
+      label: Salesforce certifications
+  email: austin.greer6@gmail.com
+  # Phone appears only on /lost (the sticker page) and in the downloadable contact card (/card).
+  phone: '+12702450938'
+  phoneDisplay: (270) 245-0938
+  links:
+    linkedin: https://www.linkedin.com/in/austin-greer91/
+    github: https://github.com/AustnG
+  site: https://austng.github.io
+  certifications:
+    - Salesforce Certified Platform Developer II
+    - Salesforce Certified Platform Developer I
+    - Salesforce Certified Administrator
+  education:
+    - school: Centre College
+      degree: B.S. Financial Economics
+      location: Danville, KY
+      years: 2009 – 2013
+  honors:
+    - Best Multimedia Programming Award
+  languages:
+    - Spanish (conversational)

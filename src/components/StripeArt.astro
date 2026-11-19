@@ -1,0 +1,15 @@
+---
+// Stripe art (Vid01). See src/scripts/stripes.ts. Decorative only.
+interface Props { shape: 'sphere' | 'crescent' | 'wave' | 'pulse'; cols?: number; class?: string }
+const { shape, cols = 34, class: cls } = Astro.props;
+---
+<canvas class:list={['stripes', cls]} data-stripes={shape} data-cols={cols} aria-hidden="true"></canvas>
+
+<script>
+  import { mountAllStripes } from '../scripts/stripes';
+  mountAllStripes();
+</script>
+
+<style>
+  .stripes { width: 100%; height: 100%; }
+</style>
