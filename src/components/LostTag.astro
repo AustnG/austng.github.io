@@ -1,0 +1,123 @@
+---
+// The lost-item page. Printed stickers point here (/lost), so it must stay fast, plain, and reliable:
+// no site navigation, no canvas, no required JavaScript, and `noindex` so search engines skip it.
+import Base from '../layouts/Base.astro';
+import { getProfile } from '../lib/content';
+import { halftoneSvg } from '../lib/halftone-svg';
+
+const p = await getProfile();
+const pin = halftoneSvg('pin');
+const subject = encodeURIComponent('Found your lost item');
+const smsBody = encodeURIComponent("Hi Austin, I found something with your sticker on it.");
+---
+<Base title={`Found something? Return it to ${p.name}`} description="This item has a lost-and-found sticker. Here's how to return it." noindex chrome={false}>
+  <div class="lost">
+    <span class="corner tl">Lost &amp; found</span>
+    <span class="corner bl">{p.location}</span>
+    <span class="corner br">Thank you, <span class="inv">truly</span></span>
+
+    <div class="sheet">
+      <div class="mark" set:html={pin} />
+      <h1>You found something of mine.</h1>
+      <p class="sub">Thanks for picking it up. Call or text me and I'll come get it.</p>
+
+      <p class="name">{p.name}</p>
+
+      <div class="actions">
+        <a class="action action--primary" href={`tel:${p.phone}`}>Call {p.phoneDisplay}</a>
+        <a class="action" href={`sms:${p.phone}?&body=${smsBody}`}>Send a text</a>
+        <a class="action" href={`mailto:${p.email}?subject=${subject}`}>Email me</a>
+      </div>
+
+      <dl class="details">
+        <div>
+          <dt>Phone</dt>
+          <dd><a href={`tel:${p.phone}`}>{p.phoneDisplay}</a> <button type="button" class="copy" data-copy={p.phoneDisplay} hidden>Copy</button></dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${p.email}?subject=${subject}`}>{p.email}</a> <button type="button" class="copy" data-copy={p.email} hidden>Copy</button></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</Base>
+
+<script>
+  // Optional copy buttons. The page works without them.
+  if (navigator.clipboard) {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+      btn.hidden = false;
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copy || '');
+          btn.textContent = 'Copied';
+          setTimeout(() => (btn.textContent = 'Copy'), 1800);
+        } catch { /* ignore */ }
+      });
+    });
+  }
+</script>
+
+<style>
+  :global(body) { background: var(--gallery); color: var(--gallery-ink); }
+  .lost {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 3.5rem 1.25rem;
+  }
+  .corner {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.06em;
+    color: var(--gallery-muted);
+  }
+  .tl { top: 1rem; left: 1.1rem; color: var(--gallery-ink); }
+  .bl { bottom: 1rem; left: 1.1rem; }
+  .br { bottom: 1rem; right: 1.1rem; }
+  .inv { background: var(--gallery-muted); color: var(--gallery); padding: 0 0.3em; }
+
+  .sheet { width: 100%; max-width: 26rem; text-align: center; }
+  .mark { width: 128px; margin: 0 auto 1.75rem; }
+  h1 { font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.4rem); letter-spacing: -0.035em; line-height: 1.08; }
+  .sub { margin-top: 0.9rem; color: #4a4a4e; }
+  .name {
+    margin-top: 2rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .actions { display: grid; gap: 0.6rem; margin-top: 1.1rem; }
+  .action {
+    display: block;
+    padding: 1rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid #c9c9c6;
+    background: var(--gallery-card);
+    font-weight: 500;
+    color: var(--gallery-ink);
+  }
+  .action--primary { background: var(--gallery-ink); color: #fff; border-color: var(--gallery-ink); }
+  .action:focus-visible { outline: 2px solid var(--spec-4); outline-offset: 3px; }
+  .details { margin: 2rem 0 0; display: grid; gap: 0.8rem; text-align: left; border-top: 1px solid #cfcfcc; padding-top: 1.2rem; }
+  .details div { display: grid; grid-template-columns: 4.5rem 1fr; align-items: baseline; }
+  dt { font-family: var(--font-mono); font-size: var(--step--2); letter-spacing: 0.1em; text-transform: uppercase; color: var(--gallery-muted); }
+  dd { margin: 0; display: flex; gap: 0.6rem; align-items: baseline; flex-wrap: wrap; overflow-wrap: anywhere; }
+  .copy {
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gallery-muted);
+    background: none;
+    border: 1px solid #cfcfcc;
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+    cursor: pointer;
+  }
+</style>

@@ -1,0 +1,13 @@
+# Bands on /music. Empty for now: copy the template below, uncomment it, and fill it in.
+# - id: band-slug
+#   name: Band Name
+#   role: Guitar, vocals
+#   years: 2018 – present
+#   status: active            # active | past
+#   blurb: One or two sentences about the band.
+#   links:
+#     - { label: Spotify, url: "https://open.spotify.com/artist/..." }
+#     - { label: Bandcamp, url: "https://example.bandcamp.com" }
+#     - { label: Instagram, url: "https://instagram.com/..." }
+#   embed: "https://open.spotify.com/embed/artist/..."   # optional player
+[]

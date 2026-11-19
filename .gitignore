@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Private inputs for the rebuild (LinkedIn export, notes). Never publish.
+docs/inputs/
+
+# Astro generated types
+.astro/

@@ -1,0 +1,117 @@
+# Work history, newest first. `tier: main` shows in full on /resume; `tier: earlier` shows as a compact list.
+# Dates are YYYY-MM. Leave `end` out for a current role.
+- id: hig-eb-platform-admin
+  company: Houchens Insurance Group
+  title: Employee Benefits Platform Administrator
+  location: Bowling Green, KY
+  start: 2026-11
+  tier: main
+  # Kept deliberately general: no internal systems, vendors, or plans.
+  bullets:
+    - Administer and build on the CRM platform that supports the Employee Benefits team, covering configuration, automation, data quality, and user support.
+    - Work with producers, account managers, and service teams to turn how they sell and serve clients into clear, repeatable workflows.
+    - Help connect the platform to the agency's existing systems, treating security and protected health information as first-class requirements.
+
+- id: cw-salesforce-developer
+  company: Camping World
+  title: Salesforce Platform Developer
+  location: Bowling Green, KY
+  start: 2019-01
+  end: 2026-03
+  tier: main
+  bullets:
+    - Developer and administrator for the Salesforce platform across Sales Cloud, Commerce Cloud, Marketing Cloud, Data Cloud, and Agentforce.
+    - Integrated third-party platforms, including Snowflake, Twilio, Azure, and VinSolutions, for Sales, Service, and Call Center teams.
+    - Worked in two-week Agile sprints, documenting projects and epics in Jira and Confluence.
+  projects:
+    - year: 2025
+      name: Lead/Opportunity Conversion
+      desc: Re-engineered the Consignment Request object into a standard Lead/Opportunity model for better history tracking and a real Quotes process.
+    - year: 2024
+      name: Universal Pricing API
+      desc: Modernized legacy auto-pricing into one company-wide API.
+    - year: 2023
+      name: Mobile Evaluation App
+      desc: Built the processes that let RV inspectors run remote inspections away from dealerships.
+    - year: 2022
+      name: Automated Pricing
+      desc: A pricing tool for Consignment Requests and a Pricing Management Tool built on an internal Used RV Inventory Index.
+    - year: 2020
+      name: RV Communicator
+      desc: Architected a Twilio texting integration inside Salesforce for sales teams.
+
+- id: cw-email-marketing
+  company: Camping World
+  title: Email Marketing Analyst
+  location: Bowling Green, KY
+  start: 2017-04
+  end: 2019-01
+  tier: main
+  bullets:
+    - Ran retail marketing email end to end, from build and deployment to analysis.
+    - Partnered with business leaders on promotions, special events, and enterprise-wide communications.
+    - Coded email in HTML, CSS, and AMPscript in ExactTarget (Salesforce Marketing Cloud).
+
+- id: cw-inventory
+  company: Camping World
+  title: Inventory Analyst
+  location: Bowling Green, KY
+  start: 2016-04
+  end: 2017-03
+  tier: main
+  bullets:
+    - Managed inventory across multiple vendors for retail stores and national warehouses.
+    - Built performance reports and demand forecasts in Cognos, TM1, and Excel.
+    - Helped roll out 700+ new products across the Pet and Bowery categories in the 2016 expansion.
+
+- id: cw-web-developer
+  company: Camping World & Good Sam + MarcusLemonis.com
+  title: Website Developer
+  location: Bowling Green, KY
+  start: 2014-05
+  end: 2016-03
+  tier: main
+  bullets:
+    - Managed corporate websites and automated reporting by syncing Google Analytics data into internal databases.
+    - Built and maintained Shopify sites for the MarcusLemonis.com brand, as featured on The Profit.
+    - Turned designer mockups into responsive pages with HTML, CSS, C#, JavaScript, and SQL.
+
+- id: koa-sales
+  company: Kentucky Outdoor Advertising
+  title: Sales Manager
+  location: Bowling Green, KY
+  start: 2012-11
+  end: 2014-05
+  tier: earlier
+  bullets:
+    - Sold billboard leases across Western Kentucky and managed vinyl ad production, installs, and the company website.
+
+- id: gm-corvette
+  company: GM Corvette Assembly Plant
+  title: Project Coordination & Logistics Intern
+  location: Bowling Green, KY
+  start: 2012-06
+  end: 2012-08
+  tier: earlier
+  bullets:
+    - Helped the Materials Department build a universal GM parts catalog and led public plant tours.
+
+- id: ecommerce-superstores
+  company: Ecommerce Superstores LLC
+  title: Website & Product Manager
+  location: Bowling Green, KY
+  start: 2011-06
+  end: 2011-08
+  tier: earlier
+  bullets:
+    - Ran daily web maintenance and product management for an online retailer.
+
+- id: sky-soccer
+  company: SKY Soccer Club
+  title: Assistant Coach
+  location: Bowling Green, KY
+  start: 2010-06
+  end: 2011-08
+  tier: earlier
+  bullets:
+    - Assistant coach and trainer for boys' and girls' U-15 teams.

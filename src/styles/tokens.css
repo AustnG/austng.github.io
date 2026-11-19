@@ -1,0 +1,60 @@
+/*
+  Design tokens. The only place colors, type, spacing and motion values are defined.
+  Direction: reference videos 00, 01, 02 (see docs/SPEC.md §6). Monochrome base,
+  one accent: the iridescent spectrum. Use the spectrum on edges and details only.
+*/
+:root {
+  /* Field */
+  --bg: #0b0b0d;
+  --bg-raised: #141518;
+  --bg-poster: #17181c;
+  --bg-header: rgb(11 11 13 / 0.94);
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.18);
+
+  /* Ink */
+  --ink: #ececea;
+  --ink-soft: #b4b4b2;
+  --ink-muted: #85858a;
+  --ink-faint: #5a5a60;
+
+  /* Gallery panels (Vid00 light gray) */
+  --gallery: #e7e7e5;
+  --gallery-ink: #111113;
+  --gallery-muted: #77777a;
+  --gallery-card: #ffffff;
+
+  /* The spectrum, in order. Used by CSS and read by the canvas effects. */
+  --spec-1: #ff6b5e; /* coral  */
+  --spec-2: #ffc95c; /* yellow */
+  --spec-3: #8eeee6; /* cyan   */
+  --spec-4: #6f8bff; /* blue   */
+  --spec-5: #a77bff; /* violet */
+  --spectrum: linear-gradient(90deg, var(--spec-1), var(--spec-2), var(--spec-3), var(--spec-4), var(--spec-5));
+
+  /* Type */
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --step--2: 0.6875rem;  /* 11px mono labels */
+  --step--1: 0.8125rem;  /* 13px */
+  --step-0: 1rem;        /* 16px body */
+  --step-1: 1.25rem;
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --step-3: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  --step-4: clamp(2.75rem, 1.6rem + 5vw, 5.5rem);
+  --tracking-label: 0.14em;
+
+  /* Space and shape */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --measure: 68ch;
+  --wide: 1320px;
+  --radius-squircle: 28%;
+  --radius: 14px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 700ms;
+}

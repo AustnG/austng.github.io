@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { getProfile, getExperience, formatRange } from '../lib/content';
+
+const p = await getProfile();
+const experience = await getExperience();
+const main = experience.filter((e) => e.tier === 'main');
+const earlier = experience.filter((e) => e.tier === 'earlier');
+const skills = (await getCollection('skills')).map((s) => s.data).sort((a, b) => a.order - b.order);
+---
+<Base title={`Resume, ${p.name}`} current="resume" description={`Resume of ${p.name}, ${p.role} at ${p.company}. ${p.headline}.`}>
+  <section class="wrap resume-head">
+    <p class="label" data-decode>01 / Resume</p>
+    <h1>{p.name}</h1>
+    <p class="headline">{p.headline}</p>
+    <!-- No email here on purpose: it appears only on /card and /lost (see AGENTS.md). -->
+    <p class="meta label">
+      {p.location} ·
+      <a class="link" href={p.links.linkedin}>{p.links.linkedin.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')}</a> ·
+      <a class="link" href="/card">{p.site.replace('https://', '')}/card</a>
+    </p>
+    <div class="actions no-print">
+      <button class="btn btn--solid" type="button" data-print>Print / Save PDF</button>
+      <a class="btn" href={p.links.linkedin} rel="me noopener" target="_blank">LinkedIn <span class="arrow">↗</span></a>
+      <a class="btn" href={p.links.github} rel="me noopener" target="_blank">GitHub <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  <section class="wrap block">
+    <h2 class="block__label label">Summary</h2>
+    <p class="summary">{p.summary}</p>
+  </section>
+
+  <section class="wrap block">
+    <h2 class="block__label label">Experience</h2>
+    <ol class="roles">
+      {main.map((role) => (
+        <li class:list={['role', { 'role--now': !role.end }]} data-reveal>
+          <div class="role__when">
+            <span class="label label--ink">{formatRange(role.start, role.end)}</span>
+            <span class="label">{role.location}</span>
+            {!role.end && <span class="now-chip label">Now</span>}
+          </div>
+          <div class="role__body">
+            <h3 class="role__title">{role.title}</h3>
+            <p class="role__co">{role.company}</p>
+            <ul class="bullets">
+              {role.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            {role.projects.length > 0 && (
+              <div class="projects">
+                <p class="label">Key projects</p>
+                <ol>
+                  {role.projects.map((pr) => (
+                    <li>
+                      <span class="label">{pr.year}</span>
+                      <span><strong>{pr.name}.</strong> {pr.desc}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    {earlier.length > 0 && (
+      <div class="earlier" data-reveal>
+        <p class="label">Earlier</p>
+        <ul>
+          {earlier.map((role) => (
+            <li>
+              <span class="label">{formatRange(role.start, role.end)}</span>
+              <span><strong>{role.title}</strong>, {role.company}. {role.bullets[0]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </section>
+
+  <section class="wrap block">
+    <h2 class="block__label label">Skills</h2>
+    <div class="skills">
+      {skills.map((group) => (
+        <div class="skill-group" data-reveal>
+          <p class="label label--ink">{group.label}</p>
+          <ul class="tags">{group.skills.map((s) => <li>{s}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap block creds">
+    <div data-reveal>
+      <h2 class="label">Certifications</h2>
+      <ul>{p.certifications.map((c) => <li>{c}</li>)}</ul>
+    </div>
+    <div data-reveal>
+      <h2 class="label">Education</h2>
+      <ul>
+        {p.education.map((e) => (
+          <li><strong>{e.degree}</strong><br />{e.school}, {e.location} · {e.years}</li>
+        ))}
+      </ul>
+    </div>
+    <div data-reveal>
+      <h2 class="label">Honors & languages</h2>
+      <ul>
+        {p.honors.map((h) => <li>{h}</li>)}
+        {p.languages.map((l) => <li>{l}</li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<script>
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .resume-head { padding-top: clamp(2rem, 1rem + 5vw, 6rem); padding-bottom: 2.5rem; }
+  h1 { font-size: var(--step-4); letter-spacing: -0.045em; margin-top: 1rem; }
+  .headline { font-size: var(--step-2); color: var(--ink-soft); margin-top: 0.75rem; letter-spacing: -0.02em; }
+  .meta { margin-top: 1.25rem; }
+  .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2rem; }
+
+  .block {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 2rem;
+    padding-block: clamp(2.5rem, 2rem + 2vw, 4rem);
+    border-top: 1px solid var(--line);
+  }
+  .block__label { font-weight: 400; }
+  .summary { font-size: var(--step-1); line-height: 1.55; color: var(--ink-soft); max-width: var(--measure); }
+
+  .roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 3rem; }
+  .role { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; }
+  .role__when { display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-start; }
+  .now-chip {
+    margin-top: 0.4rem;
+    color: var(--bg);
+    background: var(--spectrum);
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+  .role__title { font-size: var(--step-2); letter-spacing: -0.025em; }
+  .role__co { color: var(--ink-muted); margin-top: 0.35rem; }
+  .bullets { margin-top: 1rem; display: grid; gap: 0.5rem; max-width: var(--measure); }
+  .bullets li { position: relative; padding-left: 1.1rem; color: var(--ink-soft); }
+  .bullets li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 1px; background: var(--ink-muted); }
+  .projects { margin-top: 1.5rem; padding: 1.1rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius); max-width: var(--measure); }
+  .projects ol { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.65rem; }
+  .projects li { display: grid; grid-template-columns: 3rem 1fr; gap: 0.75rem; color: var(--ink-soft); font-size: var(--step--1); line-height: 1.55; }
+  .projects strong { color: var(--ink); font-weight: 500; }
+
+  /* Sits under the roles in the content column (the block grid's second column), not under the label. */
+  .earlier { grid-column: 2; margin-top: 3.5rem; }
+  .earlier ul { margin-top: 1rem; display: grid; gap: 0.8rem; }
+  .earlier li { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; color: var(--ink-muted); font-size: var(--step--1); }
+  .earlier strong { color: var(--ink-soft); font-weight: 500; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 2rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .tags li {
+    font-family: var(--font-mono);
+    font-size: var(--step--2);
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+
+  .creds { grid-template-columns: repeat(3, 1fr); }
+  .creds ul { margin-top: 0.9rem; display: grid; gap: 0.6rem; color: var(--ink-soft); }
+  .creds h2 { font-weight: 400; }
+
+  @media (max-width: 860px) {
+    .block, .role, .earlier li { grid-template-columns: 1fr; gap: 0.75rem; }
+    .earlier { grid-column: auto; }
+    .role__when { flex-direction: row; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; }
+    .now-chip { margin-top: 0; }
+    .creds { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media print {
+    .resume-head { padding-top: 0; }
+    .block { grid-template-columns: 1fr; gap: 0.5rem; border-color: #ccc; }
+    .role { grid-template-columns: 9rem 1fr; break-inside: avoid; }
+    .now-chip { background: #111; color: #fff; }
+    .tags li { border-color: #bbb; color: #333; }
+    .projects { border-color: #ccc; }
+    .summary, .bullets li, .projects li, .creds ul { color: #222; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+  }
+</style>

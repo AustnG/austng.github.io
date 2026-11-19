@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import GalleryPanel from '../components/GalleryPanel.astro';
+import HalftoneMark from '../components/HalftoneMark.astro';
+---
+<Base title="Not found, Austin Greer" noindex>
+  <section class="wrap nf">
+    <GalleryPanel tl="404 / not found" tr="austng.github.io" bl="Wrong turn" br="Head [home]">
+      <div class="nf__inner">
+        <div class="nf__mark"><HalftoneMark glyphs={['404', 'pin']} grid={48} label="404" /></div>
+        <h1>This page wandered off.</h1>
+        <a class="nf__home" href="/">Back to the home page →</a>
+      </div>
+    </GalleryPanel>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-top: 1rem; padding-bottom: 4rem; }
+  .nf__inner { display: grid; justify-items: center; gap: 1.25rem; text-align: center; }
+  .nf__mark { width: min(56vw, 260px); }
+  h1 { font-size: var(--step-3); letter-spacing: -0.035em; color: var(--gallery-ink); }
+  .nf__home { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid currentColor; }
+</style>

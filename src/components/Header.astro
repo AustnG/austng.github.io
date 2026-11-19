@@ -1,0 +1,74 @@
+---
+// Sticky top frame: name on the left, numbered nav on the right (Vid00 corner labels).
+// A near-opaque bar so page text never shows through the labels while scrolling.
+interface Props { current?: string }
+const { current } = Astro.props;
+const nav = [
+  { id: 'resume', href: '/resume', label: 'Resume' },
+  { id: 'portfolio', href: '/portfolio', label: 'Portfolio' },
+  { id: 'music', href: '/music', label: 'Music' },
+  { id: 'sport', href: '/sport', label: 'Sport' },
+];
+---
+<header class="site-header">
+  <a class="brand label label--ink" href="/" aria-label="Austin Greer, home">
+    <svg class="brand__mark" viewBox="0 0 20 20" aria-hidden="true">
+      <rect x="2" y="3" width="1.6" height="14" /><rect x="6" y="1" width="2.4" height="18" />
+      <rect x="11" y="1" width="2.4" height="18" /><rect x="16" y="3" width="1.6" height="14" />
+    </svg>
+    <span>Austin Greer</span>
+  </a>
+  <nav aria-label="Main">
+    <ul>
+      {nav.map((n, i) => (
+        <li>
+          <a href={n.href} class="label nav-link" aria-current={current === n.id ? 'page' : undefined}>
+            <span class="nav-num">0{i + 1}</span>
+            <span data-decode>{n.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem var(--gutter);
+    background: var(--bg-header);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .brand__mark { width: 18px; height: 18px; fill: currentColor; }
+  ul { display: flex; gap: clamp(0.9rem, 0.5rem + 1.5vw, 2.25rem); }
+  .nav-link {
+    color: var(--ink);
+    opacity: 0.6;
+    transition: opacity var(--dur) var(--ease-out);
+    white-space: nowrap;
+  }
+  .nav-link:hover, .nav-link[aria-current='page'] { opacity: 1; }
+  .nav-link[aria-current='page'] span[data-decode] { border-bottom: 1px solid currentColor; }
+  .nav-num { opacity: 0.55; margin-right: 0.35em; }
+
+  @media (max-width: 640px) {
+    /* Two rows on phones would eat the screen if sticky, so it scrolls away with the page. */
+    .site-header { position: relative; flex-direction: column; align-items: flex-start; gap: 0.55rem; padding-block: 0.8rem; }
+    .nav-num { display: none; }
+    ul { gap: 1.1rem; }
+  }
+</style>

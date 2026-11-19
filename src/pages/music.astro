@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import StripeArt from '../components/StripeArt.astro';
+import { getCollection } from 'astro:content';
+
+const bands = (await getCollection('bands')).map((b) => ({ id: b.id, ...b.data }));
+---
+<Base title="Music, Austin Greer" current="music" description="Austin Greer's bands, recordings, and shows.">
+  <section class="wrap feature">
+    <div class="feature__text">
+      <p class="label" data-decode>03 / Music</p>
+      <h1>Music</h1>
+      <p class="intro">The bands I play in, what we've recorded, and where we're playing next.</p>
+    </div>
+    <div class="feature__art"><StripeArt shape="pulse" cols={44} /></div>
+  </section>
+
+  <section class="wrap section">
+    {bands.length === 0 ? (
+      <div class="empty" data-reveal>
+        <p class="label label--ink">Soundcheck</p>
+        <p class="empty__text">Band pages are on the way: who's in them, what I play, recordings to listen to, and upcoming shows.</p>
+      </div>
+    ) : (
+      <ul class="bands">
+        {bands.map((b) => (
+          <li class="band" data-reveal>
+            <div class="band__head">
+              <h2>{b.name}</h2>
+              <span class:list={['label', { 'label--ink': b.status === 'active' }]}>{b.status === 'active' ? 'Active' : 'Past'} · {b.years}</span>
+            </div>
+            <p class="band__role label">{b.role}</p>
+            <p class="band__blurb">{b.blurb}</p>
+            {b.embed && (
+              <iframe class="band__embed" src={b.embed} title={`${b.name} player`} loading="lazy" allow="encrypted-media; clipboard-write" />
+            )}
+            {b.links.length > 0 && (
+              <ul class="band__links">
+                {b.links.map((l) => <li><a class="btn" href={l.url} target="_blank" rel="noopener">{l.label} <span class="arrow">↗</span></a></li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>
+
+<style>
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    min-height: min(78svh, 760px);
+    padding-top: 2rem;
+  }
+  .feature__art { height: min(62svh, 560px); }
+  h1 { font-size: var(--step-4); letter-spacing: -0.045em; margin-top: 1rem; }
+  .intro { margin-top: 1.25rem; font-size: var(--step-1); color: var(--ink-soft); max-width: 40ch; }
+  .empty {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 1rem + 3vw, 3rem);
+    max-width: 48rem;
+  }
+  .empty__text { margin-top: 0.8rem; font-size: var(--step-1); color: var(--ink-soft); }
+  .bands { display: grid; gap: 3rem; }
+  .band { border-top: 1px solid var(--line); padding-top: 1.5rem; display: grid; gap: 0.8rem; }
+  .band__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+  .band__head h2 { font-size: var(--step-3); }
+  .band__blurb { color: var(--ink-soft); max-width: var(--measure); }
+  .band__embed { width: 100%; max-width: 48rem; height: 352px; border: 0; border-radius: var(--radius); }
+  .band__links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  @media (max-width: 760px) {
+    .feature { grid-template-columns: 1fr; min-height: auto; }
+    .feature__art { height: 320px; order: -1; }
+  }
+</style>

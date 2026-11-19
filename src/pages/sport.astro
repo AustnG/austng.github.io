@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import StripeArt from '../components/StripeArt.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('sport')).map((s) => ({ id: s.id, ...s.data }));
+const clubs = items.filter((i) => i.kind !== 'timeline');
+const timeline = items.filter((i) => i.kind === 'timeline');
+---
+<Base title="Sport, Austin Greer" current="sport" description="Futsal and soccer: Toasty FC, the Bowling Green Futsal league, and a playing and coaching timeline.">
+  <section class="wrap feature">
+    <div class="feature__text">
+      <p class="label" data-decode>04 / Sport</p>
+      <h1>Sport</h1>
+      <p class="intro">Futsal and soccer: the team and league websites I've built, and the clubs along the way.</p>
+    </div>
+    <div class="feature__art"><StripeArt shape="sphere" cols={30} /></div>
+  </section>
+
+  <section class="wrap section">
+    <div class="section-head">
+      <h2>Teams & leagues</h2>
+      <span class="label">Bowling Green, KY</span>
+    </div>
+    <ul class="clubs">
+      {clubs.map((c) => (
+        <li class="club" data-reveal>
+          <span class="label">{c.kind}</span>
+          <h3>{c.name}</h3>
+          <p>{c.blurb}</p>
+          {c.link && <a class="label label--ink link" href={c.link} target="_blank" rel="noopener">{c.linkText ?? 'Visit'} <span class="arrow">↗</span></a>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="wrap section timeline-section">
+    <div class="section-head">
+      <h2>Timeline</h2>
+      <span class="label">Full playing history in progress</span>
+    </div>
+    <ol class="timeline">
+      {timeline.map((t) => (
+        <li data-reveal>
+          <span class="label label--ink">{t.years}</span>
+          <div>
+            <h3>{t.name}</h3>
+            <p>{t.blurb}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    min-height: min(78svh, 760px);
+    padding-top: 2rem;
+  }
+  .feature__art { height: min(62svh, 560px); }
+  h1 { font-size: var(--step-4); letter-spacing: -0.045em; margin-top: 1rem; }
+  .intro { margin-top: 1.25rem; font-size: var(--step-1); color: var(--ink-soft); max-width: 40ch; }
+  .section-head h2 { font-size: var(--step-2); }
+  .clubs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 1.25rem; }
+  .club {
+    display: grid;
+    gap: 0.6rem;
+    align-content: start;
+    padding: 1.4rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+  }
+  .club h3 { font-size: var(--step-2); }
+  .club p { color: var(--ink-muted); }
+  .club a { justify-self: start; margin-top: 0.3rem; }
+  .timeline-section { padding-top: 0; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.5rem;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline h3 { font-size: var(--step-1); }
+  .timeline p { color: var(--ink-muted); margin-top: 0.3rem; }
+  @media (max-width: 760px) {
+    .feature { grid-template-columns: 1fr; min-height: auto; }
+    .feature__art { height: 320px; order: -1; }
+    .timeline li { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+</style>

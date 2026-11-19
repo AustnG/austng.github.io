@@ -1,9 +1,11 @@
 name: Deploy to GitHub Pages
 
+# Every push to main builds the site and publishes it. Pull requests run the same checks
+# (see check.yml) without publishing.
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -11,36 +13,41 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Type and content check
+        run: npm run check
+
+      - name: Build (fails if a frozen QR route is missing)
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
