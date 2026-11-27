@@ -1,11 +1,31 @@
-# Portfolio entries. `mark` is 1–3 characters drawn as a halftone logo, or one of: code, note, ball, pin.
-# status: live | in-progress | concept.   category: work | personal.
+# Master project catalog (public showcase + repo-side project hub).
+#
+# Fields:
+#   mark:       1–4 characters drawn as a halftone logo, or one of: code, note, ball, pin.
+#   category:   work | personal | play
+#   status:     live | in-progress | next | idea | paused | archived
+#   visibility: public | internal  (defaults to internal; only `public` renders on /portfolio)
+#   platform:   where it lives or is built (Anti-Gravity, Google AI Studio, Google Sheets, Salesforce, Astro, etc.)
+#   tags:       short topic labels for grouping in hub/OVERVIEW.md
+#   nextStep:   concrete next action for the hub (never rendered on the public site)
+#   note:       optional Markdown note in hub/, e.g. hub/projects/my-project.md
+#   repo:       optional GitHub or workspace URL (hub metadata)
+#   link:       optional live URL shown on /portfolio when visibility is public
+#   linkText:   optional label for link
+#
+# Privacy note: this repository is public. Keep financial data, account numbers, credentials,
+# and employer internals out of this file and out of hub/. See hub/PRIVATE-APPS.md.
+# After editing this file, run `npm run hub` to refresh hub/OVERVIEW.md.
+
 - id: used-rv-pipeline
   name: Used RV Pipeline
   mark: RV
   category: work
   status: live
+  visibility: public
   year: 2025
+  platform: [Salesforce]
+  tags: [crm, automation, sales]
   desc: Automated the lead-to-opportunity process for used RVs, from intake and contact management to messaging, appointments, quoting, and scheduling.
   link: https://rv.campingworld.com/sell
   linkText: rv.campingworld.com/sell
@@ -15,7 +35,10 @@
   mark: API
   category: work
   status: live
+  visibility: public
   year: 2024
+  platform: [Salesforce]
+  tags: [integrations, api, crm]
   desc: Built and maintained integrations between Salesforce and Twilio, HappyFox, and VinSolutions so data moved cleanly between sales, service, and the call center.
   link: https://www.campingworld.com/
   linkText: campingworld.com
@@ -25,8 +48,14 @@
   mark: AG
   category: personal
   status: in-progress
+  visibility: public
   year: 2026
+  platform: [Astro, Anti-Gravity, GitHub Pages]
+  tags: [website, portfolio, hub]
   desc: This site. A static Astro build on GitHub Pages with motion drawn in Canvas 2D, and every word kept in plain YAML so any AI agent can update it.
+  nextStep: Add band details to content/bands.yaml, finish soccer timeline milestones, and seed current Anti-Gravity, Google AI Studio, and Sheets projects into the hub.
+  note: hub/projects/this-site.md
+  repo: https://github.com/AustnG/austng.github.io
   link: https://github.com/AustnG/austng.github.io
   linkText: Source on GitHub
 
@@ -35,7 +64,10 @@
   mark: BG
   category: personal
   status: live
+  visibility: public
   year: 2024
+  platform: [Web]
+  tags: [futsal, community, website]
   desc: The Bowling Green Futsal league site, with schedules, standings, and league information for players and fans.
   link: https://www.bgfutsal.com/
   linkText: bgfutsal.com
@@ -45,7 +77,10 @@
   mark: TF
   category: personal
   status: live
+  visibility: public
   year: 2024
+  platform: [Web]
+  tags: [soccer, team, website]
   desc: Home of Toasty FC, with player profiles, match results, and team news.
   link: https://www.toastyfc.com/
   linkText: toastyfc.com
@@ -55,13 +90,51 @@
   mark: ball
   category: personal
   status: in-progress
+  visibility: public
   year: 2026
+  platform: [Astro]
+  tags: [soccer, timeline, visualization]
   desc: A visual timeline of every school and club team I've played on, from youth soccer to today.
+  nextStep: Collect exact team names, years, positions, and highlights in content/sport.yaml.
 
 - id: fitness-tracker
   name: Fitness Tracker
   mark: FT
-  category: personal
-  status: concept
+  category: play
+  status: idea
+  visibility: public
   year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [fitness, tracking, prototype]
   desc: A small app for logging workouts, charting progress, and tracking personal records.
+  nextStep: Decide whether to prototype the first version in Google AI Studio backed by Google Sheets or as a lightweight standalone web app.
+  note: hub/projects/fitness-tracker.md
+
+# --- Templates (uncomment and fill in; run `npm run hub` to update hub/OVERVIEW.md) ---
+#
+# Internal hub project (tracked in hub/OVERVIEW.md, hidden from the public website):
+# - id: my-ai-studio-tool
+#   name: My AI Studio Tool
+#   mark: AI
+#   category: personal
+#   status: next
+#   visibility: internal
+#   year: 2026
+#   platform: [Google AI Studio, Google Sheets]
+#   tags: [automation, utility]
+#   desc: Short non-sensitive summary of what the project does.
+#   nextStep: Outline the sheet schema and test the first prompt workflow.
+#   note: hub/projects/my-ai-studio-tool.md
+#
+# Shareable play idea (appears in the Play & ideas section on /portfolio):
+# - id: weekend-experiment
+#   name: Weekend Experiment
+#   mark: code
+#   category: play
+#   status: idea
+#   visibility: public
+#   year: 2026
+#   platform: [Anti-Gravity]
+#   tags: [experiment, play]
+#   desc: A small, self-contained experiment worth sharing publicly.
+#   nextStep: Build a minimal one-page prototype.

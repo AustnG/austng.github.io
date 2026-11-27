@@ -11,7 +11,8 @@ the shared contract. **Why** things are the way they are lives in [`docs/SPEC.md
 npm ci            # install exact versions
 npm run dev       # local preview at http://localhost:4321
 npm run check     # TypeScript + content schema check
-npm run build     # build to dist/, then scripts/check-build.mjs verifies frozen routes and contact privacy
+npm run hub       # regenerate hub/OVERVIEW.md from content/projects.yaml
+npm run build     # build to dist/, then scripts/check-build.mjs verifies frozen routes, contact privacy, and hub visibility
 ```
 
 The npm scripts call `node ./node_modules/astro/bin/astro.mjs` directly instead of `astro`, because the
@@ -24,7 +25,10 @@ owner's work PC blocks the `astro` command shim. Keep it that way.
 | Name, headline, intro, current role, summary, home stats, links, certs, education | `content/profile.yaml` | Page templates |
 | Jobs and key projects | `content/experience.yaml` | |
 | Skills | `content/skills.yaml` | |
-| Portfolio entries | `content/projects.yaml` | |
+| Master project catalog (public `/portfolio` + internal hub entries) | `content/projects.yaml` (then run `npm run hub`) | `hub/OVERVIEW.md` directly |
+| Raw play ideas and scratchpad notes | `hub/IDEAS.md` | |
+| Deep-dive project notes and decisions | `hub/projects/<id>.md` (template: `hub/projects/_template.md`) | |
+| Private/financing app boundary and roadmap | `hub/PRIVATE-APPS.md` | |
 | Bands (Music page) | `content/bands.yaml` (template inside) | |
 | Teams, leagues, timeline (Sport page) | `content/sport.yaml` | |
 | URLs that must never break | `content/routes.json` (add only, never remove) | |
@@ -32,8 +36,11 @@ owner's work PC blocks the `astro` command shim. Keep it that way.
 | Page layout | `src/pages/*.astro`, `src/components/*.astro` | |
 | Motion effects | `src/scripts/*.ts` | |
 
-Most requests ("add my new job", "add a band", "update my summary") are a single YAML edit.
-Schemas in `src/content.config.ts` validate every file at build time, so `npm run check` catches bad edits.
+Most requests ("add my new job", "add a band", "update my summary", "log a new project or play idea") are a
+single YAML or Markdown edit. Schemas in `src/content.config.ts` validate every file at build time, so
+`npm run check` catches bad edits. Projects in `content/projects.yaml` default to `visibility: internal`
+(hub only); only entries marked `visibility: public` render on `/portfolio`. Never commit financial data,
+credentials, or private URLs to this public repo (see `hub/PRIVATE-APPS.md`).
 
 ## Hard rules
 

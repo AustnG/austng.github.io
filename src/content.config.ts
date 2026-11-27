@@ -62,10 +62,20 @@ const projects = defineCollection({
   schema: z.object({
     name: z.string(),
     mark: z.string().max(4),
-    category: z.enum(['work', 'personal']),
-    status: z.enum(['live', 'in-progress', 'concept']),
+    category: z.enum(['work', 'personal', 'play']),
+    status: z.enum(['live', 'in-progress', 'next', 'idea', 'paused', 'archived']),
+    // Default to internal so new hub entries stay off the public site until explicitly shared.
+    visibility: z.enum(['public', 'internal']).default('internal'),
     year: z.number(),
     desc: z.string(),
+    platform: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    nextStep: z.string().optional(),
+    note: z
+      .string()
+      .regex(/^hub\/[\w./-]+\.md$/, 'Use a path under hub/, for example hub/projects/my-app.md')
+      .optional(),
+    repo: z.url().optional(),
     link: z.url().optional(),
     linkText: z.string().optional(),
   }),
