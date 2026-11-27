@@ -93,9 +93,36 @@
   visibility: public
   year: 2026
   platform: [Astro]
-  tags: [soccer, timeline, visualization]
-  desc: A visual timeline of every school and club team I've played on, from youth soccer to today.
-  nextStep: Collect exact team names, years, positions, and highlights in content/sport.yaml.
+  tags: [soccer, coaching, timeline, visualization]
+  desc: A visual timeline of my full soccer career as both a player and coach, covering teams, records, coaching stints, and career milestones.
+  nextStep: Compile player and coaching history (teams, years, roles, records, and artifacts) into content/sport.yaml.
+  note: hub/projects/soccer-timeline.md
+
+- id: music-showcase
+  name: Music & Bands Showcase
+  mark: note
+  category: personal
+  status: next
+  visibility: internal
+  year: 2026
+  platform: [Astro]
+  tags: [music, bands, website]
+  desc: Showcase page on /music for bands, recordings, instruments, and live shows.
+  nextStep: Gather band names, roles, years, links (Spotify, Bandcamp, YouTube, Instagram), and upcoming shows into content/bands.yaml.
+  note: hub/projects/music-showcase.md
+
+- id: dj-sets
+  name: DJ Sets & Live Recordings
+  mark: DJ
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Astro, YouTube]
+  tags: [music, dj, video, audio]
+  desc: A dedicated showcase for DJ mixes, recorded sets, and filmed live sessions with tracklists and links.
+  nextStep: Decide whether DJ sets live inside /music or as a standalone /dj page, and choose the main embed hosts (YouTube, SoundCloud, Mixcloud).
+  note: hub/projects/dj-sets.md
 
 - id: fitness-tracker
   name: Fitness Tracker
@@ -109,6 +136,84 @@
   desc: A small app for logging workouts, charting progress, and tracking personal records.
   nextStep: Decide whether to prototype the first version in Google AI Studio backed by Google Sheets or as a lightweight standalone web app.
   note: hub/projects/fitness-tracker.md
+
+- id: tabletop-tracker
+  name: Board Game & Tabletop Tracker
+  mark: TT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [games, tabletop, tracker, collection]
+  desc: A tracker for board games and tabletop games covering owned titles, expansions, play sessions, and wish list picks.
+  nextStep: Define the core game fields (title, player count, play time, expansions, play log, BoardGameGeek link) and test a starter sheet or prototype.
+  note: hub/projects/tabletop-tracker.md
+
+- id: personal-inventory
+  name: Personal Inventory
+  mark: INV
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google Sheets, Google AI Studio]
+  tags: [inventory, organization, private-app]
+  desc: A structured personal inventory for cataloging owned gear, collections, and items worth keeping track of.
+  nextStep: Pick the first item categories to catalog and design the private data store (keeping values, serial numbers, and private records out of this public repo).
+  note: hub/projects/personal-inventory.md
+
+- id: wardrobe-builder
+  name: Wardrobe Builder
+  mark: FIT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [wardrobe, inventory, outfits]
+  desc: An outfit and wardrobe builder spun out of the personal inventory for organizing clothes and combining pieces already owned.
+  nextStep: Sketch a minimal garment schema (category, color, season, formality, photo) and test an outfit-pairing prototype.
+  note: hub/projects/wardrobe-builder.md
+
+- id: lego-tracker
+  name: LEGO Tracker & Tabletop Hub
+  mark: BRK
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets, Web]
+  tags: [lego, collection, tabletop, games]
+  desc: A tracker for LEGO sets and custom builds linked to LEGO.com and Rebrickable, plus notes and game ideas for BrikWars, One Page Rules, and LEGO D&D.
+  nextStep: List current set numbers for LEGO.com and Rebrickable links, and capture tabletop ruleset ideas (BrikWars, One Page Rules, LEGO D&D).
+  note: hub/projects/lego-tracker.md
+
+- id: airsoft-loadout
+  name: Airsoft Kit & Loadout Builder
+  mark: KIT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Anti-Gravity]
+  tags: [airsoft, inventory, loadout, gaming]
+  desc: An airsoft kit log and wish list paired with a Call of Duty or Tarkov-style visual loadout builder powered by owned gear.
+  nextStep: Define the equipment slots (primary, secondary, optics, attachments, rig, comms, wish list) and mock up a slot-based loadout UI.
+  note: hub/projects/airsoft-loadout.md
+
+- id: knowledge-journal
+  name: Quote & Knowledge Journal
+  mark: QTE
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Anti-Gravity, Google AI Studio, Google Sheets]
+  tags: [knowledge, quotes, journal, resurfacing]
+  desc: A quote and knowledge tracker journal to capture, analyze, archive, and resurface favorite quotes and ideas over time.
+  nextStep: Define the entry fields (quote, author/source, tags, reflection) and pick the resurfacing workflow (random prompt, weekly review, or searchable archive).
+  note: hub/projects/knowledge-journal.md
 
 # --- Templates (uncomment and fill in; run `npm run hub` to update hub/OVERVIEW.md) ---
 #
