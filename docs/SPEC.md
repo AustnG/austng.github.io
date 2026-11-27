@@ -98,13 +98,25 @@ content/
                       links, certifications, education, honors, languages
   experience.yaml     every role, newest first; tier: main | earlier; key projects per role
   skills.yaml         skill groups
-  projects.yaml       portfolio entries (category: work | personal; mark = halftone glyph)
+  projects.yaml       master project catalog (category: work | personal | play;
+                      status: live | in-progress | next | idea | paused | archived;
+                      visibility: public | internal, defaulting to internal; platform, tags,
+                      nextStep, note, repo, link)
   bands.yaml          bands for /music (empty, with a template)
   sport.yaml          teams, leagues and timeline for /sport
   routes.json         frozen URLs, checked after every build (see §8)
+hub/
+  README.md           how the project hub and visibility rules work
+  OVERVIEW.md         auto-generated project board (`npm run hub`) from content/projects.yaml
+  IDEAS.md            low-friction scratchpad for raw play ideas
+  PRIVATE-APPS.md     privacy boundary and hosting patterns for financing and login-gated apps
+  projects/*.md       deep-dive notes, next steps, and decisions for individual projects
 ```
 
 The `.vcf` contact file is generated from `profile.yaml` at build time, so it never goes stale.
+`hub/` stays outside `src/` and `public/`, so it is never published to `dist/`. Only entries in
+`content/projects.yaml` with `visibility: public` render on `/portfolio`, grouped into Shipped,
+In progress, and Play & ideas.
 
 Updating the site should usually mean editing one of these files and nothing else.
 
@@ -256,6 +268,8 @@ Recorded 2026-11-17. Austin didn't object to the recommendations; any of these c
 | D5 | Analytics | **Deferred.** Add GoatCounter or Cloudflare Web Analytics later; no cookies either way |
 | D6 | Resume download | **Print / Save as PDF** with a print stylesheet for now; a build-generated PDF later |
 | D7 | Accent system | **One global accent** (the iridescent spectrum), because Vid03 and Vid04 are out |
+| D8 | Project hub & showcase | **Unified catalog (`content/projects.yaml`) + `hub/` Markdown notes** (2026-11-27). Entries default to `visibility: internal`; only `visibility: public` renders on `/portfolio` (grouped into Shipped, In progress, and Play & ideas). `npm run hub` generates `hub/OVERVIEW.md`. |
+| D9 | Private apps & financing | **Strict public-repo boundary** (2026-11-27). Keep this repo public for the website and non-sensitive project tracking; keep personal finances and private login-gated tools in external authenticated services or a separate private repo (see `hub/PRIVATE-APPS.md`). |
 
 ## 12. Inputs needed from Austin
 

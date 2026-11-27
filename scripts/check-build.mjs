@@ -7,6 +7,7 @@
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parse } from 'yaml';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
@@ -67,6 +68,36 @@ if (leaks.length) {
   console.error(`  Phone is allowed only in: ${ALLOWED.phone.join(', ')}`);
 } else {
   console.log('✓ Email and phone appear only on /card and /lost.');
+}
+
+// ---------- 3. Hub integrity & visibility ----------
+const projects = parse(readFileSync(join(root, 'content/projects.yaml'), 'utf8')) ?? [];
+const missingNotes = projects.filter((p) => p.note && !existsSync(join(root, p.note)));
+if (missingNotes.length) {
+  failed = true;
+  console.error('\n✗ Project note files referenced in content/projects.yaml do not exist:');
+  for (const p of missingNotes) console.error(`  ${p.id} → ${p.note}`);
+} else {
+  console.log('✓ All referenced hub project notes exist.');
+}
+
+const portfolioHtml = readFileSync(join(dist, 'portfolio.html'), 'utf8').toLowerCase();
+const hubLeaks = [];
+for (const p of projects) {
+  const visibility = p.visibility ?? 'internal';
+  if (visibility !== 'public' && p.desc && portfolioHtml.includes(p.desc.toLowerCase())) {
+    hubLeaks.push(`  internal project "${p.id}" description found in dist/portfolio.html`);
+  }
+  if (p.nextStep && portfolioHtml.includes(p.nextStep.toLowerCase())) {
+    hubLeaks.push(`  hub nextStep for "${p.id}" found in dist/portfolio.html`);
+  }
+}
+if (hubLeaks.length) {
+  failed = true;
+  console.error('\n✗ Internal hub details leaked into dist/portfolio.html:');
+  console.error(hubLeaks.join('\n'));
+} else {
+  console.log('✓ Only public project details appear on /portfolio.');
 }
 
 process.exit(failed ? 1 : 0);

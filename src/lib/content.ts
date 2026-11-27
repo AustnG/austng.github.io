@@ -25,6 +25,15 @@ export async function getExperience() {
   return all.map((e) => e.data).sort((a, b) => b.start.localeCompare(a.start));
 }
 
+export async function getPublicProjects() {
+  const all = await getCollection('projects');
+  // Only entries marked public ship to the website; newest first, then alphabetical.
+  return all
+    .filter((p) => p.data.visibility === 'public')
+    .map((p) => ({ id: p.id, ...p.data }))
+    .sort((a, b) => b.year - a.year || a.name.localeCompare(b.name));
+}
+
 /** Splits "Code, music, [futsal]" into parts so the bracketed word can get the inverted chip. */
 export function splitTagline(tagline: string) {
   const m = tagline.match(/^(.*)\[(.+)\](.*)$/);

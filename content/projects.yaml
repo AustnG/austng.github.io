@@ -1,11 +1,31 @@
-# Portfolio entries. `mark` is 1–3 characters drawn as a halftone logo, or one of: code, note, ball, pin.
-# status: live | in-progress | concept.   category: work | personal.
+# Master project catalog (public showcase + repo-side project hub).
+#
+# Fields:
+#   mark:       1–4 characters drawn as a halftone logo, or one of: code, note, ball, pin.
+#   category:   work | personal | play
+#   status:     live | in-progress | next | idea | paused | archived
+#   visibility: public | internal  (defaults to internal; only `public` renders on /portfolio)
+#   platform:   where it lives or is built (Anti-Gravity, Google AI Studio, Google Sheets, Salesforce, Astro, etc.)
+#   tags:       short topic labels for grouping in hub/OVERVIEW.md
+#   nextStep:   concrete next action for the hub (never rendered on the public site)
+#   note:       optional Markdown note in hub/, e.g. hub/projects/my-project.md
+#   repo:       optional GitHub or workspace URL (hub metadata)
+#   link:       optional live URL shown on /portfolio when visibility is public
+#   linkText:   optional label for link
+#
+# Privacy note: this repository is public. Keep financial data, account numbers, credentials,
+# and employer internals out of this file and out of hub/. See hub/PRIVATE-APPS.md.
+# After editing this file, run `npm run hub` to refresh hub/OVERVIEW.md.
+
 - id: used-rv-pipeline
   name: Used RV Pipeline
   mark: RV
   category: work
   status: live
+  visibility: public
   year: 2025
+  platform: [Salesforce]
+  tags: [crm, automation, sales]
   desc: Automated the lead-to-opportunity process for used RVs, from intake and contact management to messaging, appointments, quoting, and scheduling.
   link: https://rv.campingworld.com/sell
   linkText: rv.campingworld.com/sell
@@ -15,7 +35,10 @@
   mark: API
   category: work
   status: live
+  visibility: public
   year: 2024
+  platform: [Salesforce]
+  tags: [integrations, api, crm]
   desc: Built and maintained integrations between Salesforce and Twilio, HappyFox, and VinSolutions so data moved cleanly between sales, service, and the call center.
   link: https://www.campingworld.com/
   linkText: campingworld.com
@@ -25,8 +48,14 @@
   mark: AG
   category: personal
   status: in-progress
+  visibility: public
   year: 2026
+  platform: [Astro, Anti-Gravity, GitHub Pages]
+  tags: [website, portfolio, hub]
   desc: This site. A static Astro build on GitHub Pages with motion drawn in Canvas 2D, and every word kept in plain YAML so any AI agent can update it.
+  nextStep: Add band details to content/bands.yaml, finish soccer timeline milestones, and seed current Anti-Gravity, Google AI Studio, and Sheets projects into the hub.
+  note: hub/projects/this-site.md
+  repo: https://github.com/AustnG/austng.github.io
   link: https://github.com/AustnG/austng.github.io
   linkText: Source on GitHub
 
@@ -35,7 +64,10 @@
   mark: BG
   category: personal
   status: live
+  visibility: public
   year: 2024
+  platform: [Web]
+  tags: [futsal, community, website]
   desc: The Bowling Green Futsal league site, with schedules, standings, and league information for players and fans.
   link: https://www.bgfutsal.com/
   linkText: bgfutsal.com
@@ -45,7 +77,10 @@
   mark: TF
   category: personal
   status: live
+  visibility: public
   year: 2024
+  platform: [Web]
+  tags: [soccer, team, website]
   desc: Home of Toasty FC, with player profiles, match results, and team news.
   link: https://www.toastyfc.com/
   linkText: toastyfc.com
@@ -55,13 +90,156 @@
   mark: ball
   category: personal
   status: in-progress
+  visibility: public
   year: 2026
-  desc: A visual timeline of every school and club team I've played on, from youth soccer to today.
+  platform: [Astro]
+  tags: [soccer, coaching, timeline, visualization]
+  desc: A visual timeline of my full soccer career as both a player and coach, covering teams, records, coaching stints, and career milestones.
+  nextStep: Compile player and coaching history (teams, years, roles, records, and artifacts) into content/sport.yaml.
+  note: hub/projects/soccer-timeline.md
+
+- id: music-showcase
+  name: Music & Bands Showcase
+  mark: note
+  category: personal
+  status: next
+  visibility: internal
+  year: 2026
+  platform: [Astro]
+  tags: [music, bands, website]
+  desc: Showcase page on /music for bands, recordings, instruments, and live shows.
+  nextStep: Gather band names, roles, years, links (Spotify, Bandcamp, YouTube, Instagram), and upcoming shows into content/bands.yaml.
+  note: hub/projects/music-showcase.md
+
+- id: dj-sets
+  name: DJ Sets & Live Recordings
+  mark: DJ
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Astro, YouTube]
+  tags: [music, dj, video, audio]
+  desc: A dedicated showcase for DJ mixes, recorded sets, and filmed live sessions with tracklists and links.
+  nextStep: Decide whether DJ sets live inside /music or as a standalone /dj page, and choose the main embed hosts (YouTube, SoundCloud, Mixcloud).
+  note: hub/projects/dj-sets.md
 
 - id: fitness-tracker
   name: Fitness Tracker
   mark: FT
-  category: personal
-  status: concept
+  category: play
+  status: idea
+  visibility: public
   year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [fitness, tracking, prototype]
   desc: A small app for logging workouts, charting progress, and tracking personal records.
+  nextStep: Decide whether to prototype the first version in Google AI Studio backed by Google Sheets or as a lightweight standalone web app.
+  note: hub/projects/fitness-tracker.md
+
+- id: tabletop-tracker
+  name: Board Game & Tabletop Tracker
+  mark: TT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [games, tabletop, tracker, collection]
+  desc: A tracker for board games and tabletop games covering owned titles, expansions, play sessions, and wish list picks.
+  nextStep: Define the core game fields (title, player count, play time, expansions, play log, BoardGameGeek link) and test a starter sheet or prototype.
+  note: hub/projects/tabletop-tracker.md
+
+- id: personal-inventory
+  name: Personal Inventory
+  mark: INV
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google Sheets, Google AI Studio]
+  tags: [inventory, organization, private-app]
+  desc: A structured personal inventory for cataloging owned gear, collections, and items worth keeping track of.
+  nextStep: Pick the first item categories to catalog and design the private data store (keeping values, serial numbers, and private records out of this public repo).
+  note: hub/projects/personal-inventory.md
+
+- id: wardrobe-builder
+  name: Wardrobe Builder
+  mark: FIT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets]
+  tags: [wardrobe, inventory, outfits]
+  desc: An outfit and wardrobe builder spun out of the personal inventory for organizing clothes and combining pieces already owned.
+  nextStep: Sketch a minimal garment schema (category, color, season, formality, photo) and test an outfit-pairing prototype.
+  note: hub/projects/wardrobe-builder.md
+
+- id: lego-tracker
+  name: LEGO Tracker & Tabletop Hub
+  mark: BRK
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Google Sheets, Web]
+  tags: [lego, collection, tabletop, games]
+  desc: A tracker for LEGO sets and custom builds linked to LEGO.com and Rebrickable, plus notes and game ideas for BrikWars, One Page Rules, and LEGO D&D.
+  nextStep: List current set numbers for LEGO.com and Rebrickable links, and capture tabletop ruleset ideas (BrikWars, One Page Rules, LEGO D&D).
+  note: hub/projects/lego-tracker.md
+
+- id: airsoft-loadout
+  name: Airsoft Kit & Loadout Builder
+  mark: KIT
+  category: play
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Google AI Studio, Anti-Gravity]
+  tags: [airsoft, inventory, loadout, gaming]
+  desc: An airsoft kit log and wish list paired with a Call of Duty or Tarkov-style visual loadout builder powered by owned gear.
+  nextStep: Define the equipment slots (primary, secondary, optics, attachments, rig, comms, wish list) and mock up a slot-based loadout UI.
+  note: hub/projects/airsoft-loadout.md
+
+- id: knowledge-journal
+  name: Quote & Knowledge Journal
+  mark: QTE
+  category: personal
+  status: idea
+  visibility: internal
+  year: 2026
+  platform: [Anti-Gravity, Google AI Studio, Google Sheets]
+  tags: [knowledge, quotes, journal, resurfacing]
+  desc: A quote and knowledge tracker journal to capture, analyze, archive, and resurface favorite quotes and ideas over time.
+  nextStep: Define the entry fields (quote, author/source, tags, reflection) and pick the resurfacing workflow (random prompt, weekly review, or searchable archive).
+  note: hub/projects/knowledge-journal.md
+
+# --- Templates (uncomment and fill in; run `npm run hub` to update hub/OVERVIEW.md) ---
+#
+# Internal hub project (tracked in hub/OVERVIEW.md, hidden from the public website):
+# - id: my-ai-studio-tool
+#   name: My AI Studio Tool
+#   mark: AI
+#   category: personal
+#   status: next
+#   visibility: internal
+#   year: 2026
+#   platform: [Google AI Studio, Google Sheets]
+#   tags: [automation, utility]
+#   desc: Short non-sensitive summary of what the project does.
+#   nextStep: Outline the sheet schema and test the first prompt workflow.
+#   note: hub/projects/my-ai-studio-tool.md
+#
+# Shareable play idea (appears in the Play & ideas section on /portfolio):
+# - id: weekend-experiment
+#   name: Weekend Experiment
+#   mark: code
+#   category: play
+#   status: idea
+#   visibility: public
+#   year: 2026
+#   platform: [Anti-Gravity]
+#   tags: [experiment, play]
+#   desc: A small, self-contained experiment worth sharing publicly.
+#   nextStep: Build a minimal one-page prototype.
